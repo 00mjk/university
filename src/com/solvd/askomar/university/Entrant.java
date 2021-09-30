@@ -1,5 +1,6 @@
 package com.solvd.askomar.university;
 
+// transl. Абтуриент
 public class Entrant {
     private static Integer entrantAmount = 0;
 

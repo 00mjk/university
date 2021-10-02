@@ -1,14 +1,14 @@
 package com.solvd.askomar.university;
 
-public class Specialization {
+public class EmployeePosition {
     private String name;
 
-    public Specialization(String name) {
+    public EmployeePosition(String name) {
         this.name = name;
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {

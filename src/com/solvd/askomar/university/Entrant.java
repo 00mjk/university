@@ -1,5 +1,7 @@
 package com.solvd.askomar.university;
 
+import java.time.LocalDateTime;
+
 // transl. Абтуриент
 public class Entrant {
     private static Integer entrantAmount = 0;
@@ -8,18 +10,20 @@ public class Entrant {
     private String surname;
     private String name;
     private String patronymic;
-    private Integer scoresAmount;
+    private LocalDateTime birthDateTime;
+    private Certificate[] certificates;
 
-    public Entrant(String surname, String name,  Integer scoresAmount) {
+    public Entrant(String surname, String name, LocalDateTime birthDateTime,  Certificate... certificates) {
         this.id = ++entrantAmount;
         this.surname = surname;
         this.name = name;
-        this.scoresAmount = scoresAmount;
+        this.birthDateTime = birthDateTime;
+        this.certificates = certificates;
     }
 
-    public Entrant(String surname, String name, String patronymic, Integer scoresAmount) {
-        this(surname, name, scoresAmount);
-        this.setPatronymic(patronymic);
+    public Entrant(String surname, String name, String patronymic,  LocalDateTime birthDateTime, Certificate...certificates) {
+        this(surname, name, birthDateTime, certificates);
+        this.patronymic = patronymic;
     }
 
     public static Integer getEntrantAmount() {
@@ -54,12 +58,23 @@ public class Entrant {
         this.patronymic = patronymic;
     }
 
-    public Integer getScoresAmount() {
-        return this.scoresAmount;
+    public Certificate[] getCertificates() {
+        return certificates;
     }
 
-    public void setScoresAmount(Integer scoresAmount) {
-        this.scoresAmount = scoresAmount;
+    public void setCertificates(Certificate[] certificates) {
+        this.certificates = certificates;
+    }
+
+
+
+    public Integer getSumMark() {
+        int sumMark = 0;
+
+        for (int i = 0; i < certificates.length; i++) {
+            sumMark += this.certificates[i].getMark();
+        }
+        return sumMark;
     }
 
 }

@@ -1,17 +1,20 @@
 package com.solvd.askomar.university;
 
+// transl. Сотрудник
 public class Employee {
     private String surname;
     private String name;
     private String patronymic;
+    private EmployeePosition employeePosition;
 
-    public Employee(String surname, String name) {
+    public Employee(String surname, String name, EmployeePosition employeePosition) {
         this.surname = surname;
         this.name = name;
+        this.employeePosition = employeePosition;
     }
 
-    public Employee(String surname, String name, String patronymic) {
-        this(surname, name);
+    public Employee(String surname, String name, String patronymic, EmployeePosition employeePosition) {
+        this(surname, name, employeePosition);
         this.patronymic = patronymic;
     }
 
@@ -37,5 +40,21 @@ public class Employee {
 
     public void setPatronymic(String patronymic) {
         this.patronymic = patronymic;
+    }
+
+    public EmployeePosition getEmployeePosition() {
+        return employeePosition;
+    }
+
+    public void setEmployeePosition(EmployeePosition employeePosition) {
+        this.employeePosition = employeePosition;
+    }
+
+    public String getFullName() {
+        return this.surname + " " + this.name +  " " +(this.patronymic != null ? this.patronymic : "") + " " + this.employeePosition.getName();
+    }
+
+    public void printFullNameToConsole() {
+        System.out.println(getFullName());
     }
 }

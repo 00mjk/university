@@ -9,9 +9,9 @@ public class Departament {
         this.name = name;
     }
 
-    public Departament(String name, Specialization[] specializations) {
+    public Departament(String name, Specialization... specializations) {
         this(name);
-        this.setSpecializations(specializations);
+        this.specializations = specializations;
     }
 
     public String getName() {
@@ -23,10 +23,10 @@ public class Departament {
     }
 
     public Specialization[] getSpecializations() {
-        return this.specializations;
+        return specializations;
     }
 
-    public void setSpecializations(Specialization[] specializations) {
+    public void setSpecializations(Specialization... specializations) {
         this.specializations = specializations;
     }
 }

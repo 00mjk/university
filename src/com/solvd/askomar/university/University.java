@@ -7,7 +7,7 @@ public class University {
     private String name;
     private City city;
     private Date foundationDate;
-    private Departament[] departaments;
+    private Department[] departments;
 
     public University(String name, City city, Date foundationDate) {
         this.name = name;
@@ -15,9 +15,9 @@ public class University {
         this.foundationDate = foundationDate;
     }
 
-    public University(String name, City city, Date foundationDate, Departament ... departaments) {
+    public University(String name, City city, Date foundationDate, Department... departments) {
         this(name, city, foundationDate);
-        this.departaments = departaments;
+        this.departments = departments;
     }
 
     public String getName() {
@@ -44,28 +44,28 @@ public class University {
         this.foundationDate = foundationDate;
     }
 
-    public Departament[] getDepartaments() {
-        return departaments;
+    public Department[] getDepartaments() {
+        return departments;
     }
 
-    public void setDepartaments(Departament[] departaments) {
-        this.departaments = departaments;
+    public void setDepartaments(Department[] departments) {
+        this.departments = departments;
     }
 
     public String getDepartamentsByString() {
         String resultString = "";
-        for(int i = 0; i < departaments.length; i++) {
-            resultString +=  departaments[i].getName() + " ";
+        for(int i = 0; i < departments.length; i++) {
+            resultString +=  departments[i].getName() + " ";
         }
         return resultString;
     }
 
     public String getFullUnivercityInfo() {
         String info = "University: " + this.name + "\n";
-        for(int i = 0; i < this.departaments.length; i++) {
-            info += "Departament: " + this.departaments[i].getName() + "\n";
-            for(int j = 0; j < this.departaments[i].getSpecializations().length; j++) {
-                info += this.departaments[i].getSpecializations()[j].getName() + "\n";
+        for(int i = 0; i < this.departments.length; i++) {
+            info += "Department: " + this.departments[i].getName() + "\n";
+            for(int j = 0; j < this.departments[i].getSpecializations().length; j++) {
+                info += this.departments[i].getSpecializations()[j].getName() + "\n";
             }
         }
         return info;

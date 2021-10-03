@@ -1,15 +1,15 @@
 package com.solvd.askomar.university;
 
 // transl. Кафедра
-public class Departament {
+public class Department {
     private String name;
     private Specialization[] specializations;
 
-    public Departament(String name) {
+    public Department(String name) {
         this.name = name;
     }
 
-    public Departament(String name, Specialization... specializations) {
+    public Department(String name, Specialization... specializations) {
         this(name);
         this.specializations = specializations;
     }

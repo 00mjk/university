@@ -27,11 +27,11 @@ public class Main {
 
         University university = new University("Garvard", cities[0], new Date("03/04/1988"));
 
-        Departament[] departaments = new Departament[2];
-        departaments[0] = new Departament("Automative");
-        departaments[1] = new Departament("Mechanical Engineering");
+        Department[] departments = new Department[2];
+        departments[0] = new Department("Automative");
+        departments[1] = new Department("Mechanical Engineering");
 
-        university.setDepartaments(departaments);
+        university.setDepartaments(departments);
 
         Specialization[] specializations = new Specialization[6];
         specializations[0] = new Specialization("Automation of technological processes and productions");
@@ -41,8 +41,8 @@ public class Main {
         specializations[4] = new Specialization("Industrial thermal power engineering");
         specializations[5] = new Specialization("Relay protection sand automation");
 
-        departaments[0].setSpecializations(specializations[0], specializations[1], specializations[2]);
-        departaments[1].setSpecializations(specializations[3], specializations[4], specializations[5]);
+        departments[0].setSpecializations(specializations[0], specializations[1], specializations[2]);
+        departments[1].setSpecializations(specializations[3], specializations[4], specializations[5]);
 
         SpecializationPlan[] specializationPlans = new SpecializationPlan[specializations.length];
 

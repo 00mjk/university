@@ -68,8 +68,7 @@ public class Main {
             }
         }
 
-        System.out.println("Can entrant go to: "  + specializationPlans[2].getSpecialization().getName() + " - " + enrollmentService.isCanEnrollToSpecialisation(entrant, specializationPlans[2]));
-        System.out.println("\n");
+        System.out.println(String.format("Is can entrant to: %s - %b \n", specializationPlans[2].getSpecialization().getName(), enrollmentService.isCanEnrollToSpecialisation(entrant, specializationPlans[2])));
         System.out.println(university.getFullUnivercityInfo());
         System.out.println(university.getDepartamentsByString());
     }

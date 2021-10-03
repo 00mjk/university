@@ -3,6 +3,7 @@ package com.solvd.askomar.university;
 public class EntrantForm {
 
     public static Integer entrantFormsAmount = 0;
+
     private Entrant entrant;
     private Specialization specialization;
     private boolean isPaid;

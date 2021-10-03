@@ -48,12 +48,12 @@ public class EnrollmentService {
     }
 
     public boolean enrollSpecialisation(Entrant entrant, SpecializationPlan specializationPlan) {
-        if(isCanEnrollToSpecialisation(entrant, specializationPlan)) {
+        boolean canEnroll = isCanEnrollToSpecialisation(entrant, specializationPlan);
+        if(canEnroll) {
             EntrantForm entrantForm = new EntrantForm(entrant, specializationPlan.getSpecialization(), false);
             this.entrantForms[EntrantForm.entrantFormsAmount] = entrantForm;
             EntrantForm.entrantFormsAmount++;
-            return true;
         }
-        return false;
+        return canEnroll;
     }
 }

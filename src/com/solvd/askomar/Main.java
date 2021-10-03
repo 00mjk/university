@@ -41,8 +41,8 @@ public class Main {
         specializations[4] = new Specialization("Industrial thermal power engineering");
         specializations[5] = new Specialization("Relay protection sand automation");
 
-        departments[0].setSpecializations(specializations[0], specializations[1], specializations[2]);
-        departments[1].setSpecializations(specializations[3], specializations[4], specializations[5]);
+        departments[0].setSpecializations(new Specialization[] {specializations[0], specializations[1], specializations[2]});
+        departments[1].setSpecializations(new Specialization[] {specializations[3], specializations[4], specializations[5]});
 
         SpecializationPlan[] specializationPlans = new SpecializationPlan[specializations.length];
 

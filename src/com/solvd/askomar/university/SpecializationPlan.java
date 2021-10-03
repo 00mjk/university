@@ -57,20 +57,20 @@ public class SpecializationPlan {
         this.paidCost = paidCost;
     }
 
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
     public Integer getMinMark() {
         return minMark;
     }
 
     public void setMinMark(Integer minMark) {
         this.minMark = minMark;
+    }
+
+    public Date getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Date lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 
     public String getInfo(boolean isPaid) {

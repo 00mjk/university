@@ -14,7 +14,7 @@ public class Entrant {
     private LocalDateTime dateOfBirth;
     private Certificate[] certificates;
 
-    public Entrant(String surname, String name, LocalDateTime dateOfBirth,  Certificate... certificates) {
+    public Entrant(String surname, String name, LocalDateTime dateOfBirth,  Certificate[] certificates) {
         this.id = ++entrantAmount;
         this.surname = surname;
         this.name = name;
@@ -22,7 +22,7 @@ public class Entrant {
         this.certificates = certificates;
     }
 
-    public Entrant(String surname, String name, String patronymic,  LocalDateTime birthDateTime, Certificate...certificates) {
+    public Entrant(String surname, String name, String patronymic,  LocalDateTime birthDateTime, Certificate[] certificates) {
         this(surname, name, birthDateTime, certificates);
         this.patronymic = patronymic;
     }

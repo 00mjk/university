@@ -10,7 +10,7 @@ public class Department {
         this.name = name;
     }
 
-    public Department(String name, Specialization... specializations) {
+    public Department(String name, Specialization[] specializations) {
         this(name);
         this.specializations = specializations;
     }
@@ -27,7 +27,7 @@ public class Department {
         return specializations;
     }
 
-    public void setSpecializations(Specialization... specializations) {
+    public void setSpecializations(Specialization[] specializations) {
         this.specializations = specializations;
     }
 }

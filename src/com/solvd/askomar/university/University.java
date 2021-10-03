@@ -16,7 +16,7 @@ public class University {
         this.foundationDate = foundationDate;
     }
 
-    public University(String name, City city, Date foundationDate, Department... departments) {
+    public University(String name, City city, Date foundationDate, Department[] departments) {
         this(name, city, foundationDate);
         this.departments = departments;
     }

@@ -14,8 +14,8 @@ public class Employee {
         this.position = position;
     }
 
-    public Employee(String surname, String name, String patronymic, EmployeePosition employeePosition) {
-        this(surname, name, employeePosition);
+    public Employee(String surname, String name, String patronymic, EmployeePosition position) {
+        this(surname, name, position);
         this.patronymic = patronymic;
     }
 

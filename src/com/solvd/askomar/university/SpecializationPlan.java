@@ -73,15 +73,11 @@ public class SpecializationPlan {
         this.lastUpdate = lastUpdate;
     }
 
-    public String getInfo(boolean isPaid) {
-        if(isPaid) {
-            return this.specialization.getName() + "Paid places amount: " + this.paidPlacesAmount + " Cost: " + this.paidCost;
+    public String getInfo(boolean paid) {
+        if(paid) {
+            return String.format("%s: paid places amount - %d, cost - %f", this.specialization.getName(), this.paidPlacesAmount, this.paidCost);
         } else {
-            return this.specialization.getName() + " Free placesAmount: " + this.freePlacesAmount;
+            return String.format("%s: free places amount - %d", this.specialization.getName(), this.freePlacesAmount);
         }
-    }
-
-    public String getInfo(boolean isPaid, boolean withDateStamp) {
-        return this.getInfo(isPaid) + " DateStamp: " + new Date().toString();
     }
 }

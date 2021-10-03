@@ -3,6 +3,7 @@ package com.solvd.askomar.university;
 import java.util.Date;
 
 public class SpecializationPlan {
+
     private Specialization specialization;
     private int freePlacesAmount;
     private int paidPlaceAmount;

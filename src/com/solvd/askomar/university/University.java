@@ -4,6 +4,7 @@ import java.util.Date;
 
 // transl. Университет
 public class University {
+
     private String name;
     private City city;
     private Date foundationDate;

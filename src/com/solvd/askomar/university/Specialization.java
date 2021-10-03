@@ -1,6 +1,7 @@
 package com.solvd.askomar.university;
 
 public class Specialization {
+
     private String name;
 
     public Specialization(String name) {

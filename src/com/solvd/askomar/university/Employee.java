@@ -2,6 +2,7 @@ package com.solvd.askomar.university;
 
 // transl. Сотрудник
 public class Employee {
+
     private String surname;
     private String name;
     private String patronymic;

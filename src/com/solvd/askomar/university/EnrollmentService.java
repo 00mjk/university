@@ -6,6 +6,7 @@ import com.solvd.askomar.university.Specialization;
 import com.solvd.askomar.university.SpecializationPlan;
 
 public class EnrollmentService {
+
     SpecializationPlan[] specializationPlans;
     EntrantForm[] entrantForms;
 

@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 // transl. Абтуриент
 public class Entrant {
+
     private static Integer entrantAmount = 0;
 
     private Integer id;

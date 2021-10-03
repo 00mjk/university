@@ -1,6 +1,7 @@
 package com.solvd.askomar.university;
 
 public class EmployeePosition {
+
     private String name;
 
     public EmployeePosition(String name) {

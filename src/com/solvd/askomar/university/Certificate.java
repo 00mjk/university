@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 // transl. Аттестат
 public class Certificate {
+
     private Integer id;
     private Subject subject;
     private Integer mark;

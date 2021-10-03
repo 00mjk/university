@@ -1,6 +1,7 @@
 package com.solvd.askomar.university;
 
 public class City {
+
     private String name;
 
     public City(String name) {

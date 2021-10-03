@@ -2,6 +2,7 @@ package com.solvd.askomar.university;
 
 // transl. Кафедра
 public class Department {
+
     private String name;
     private Specialization[] specializations;
 

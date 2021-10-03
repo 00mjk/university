@@ -6,12 +6,12 @@ public class EntrantForm {
 
     private Entrant entrant;
     private Specialization specialization;
-    private boolean isPaid;
+    private boolean paid;
 
-    public EntrantForm(Entrant entrant, Specialization specialization, boolean isPaid) {
+    public EntrantForm(Entrant entrant, Specialization specialization, boolean paid) {
         this.entrant = entrant;
         this.specialization = specialization;
-        this.isPaid = isPaid;
+        this.paid = paid;
     }
 
     public Entrant getEntrant() {
@@ -31,10 +31,10 @@ public class EntrantForm {
     }
 
     public boolean isPaid() {
-        return isPaid;
+        return paid;
     }
 
     public void setPaid(boolean paid) {
-        isPaid = paid;
+        this.paid = paid;
     }
 }

@@ -37,14 +37,14 @@ public class EnrollmentService {
     }
 
     public boolean isCanEnrollToSpecialisation(Entrant entrant, SpecializationPlan specializationPlan) {
-        boolean isCanEnrollToSpec = false;
+        boolean canEnrollToSpec = false;
         SpecializationPlan[] availableSpecialisations = getAvailableSpecialisations(entrant);
         for(int i = 0; i < availableSpecialisations.length; i++) {
             if(availableSpecialisations[i] == specializationPlan) {
-                isCanEnrollToSpec = true;
+                canEnrollToSpec = true;
             }
         }
-        return isCanEnrollToSpec;
+        return canEnrollToSpec;
     }
 
     public boolean enrollSpecialisation(Entrant entrant, SpecializationPlan specializationPlan) {

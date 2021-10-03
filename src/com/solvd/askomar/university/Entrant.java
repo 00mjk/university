@@ -75,15 +75,11 @@ public class Entrant {
         this.certificates = certificates;
     }
 
-
-
     public Integer getSumMark() {
         int sumMark = 0;
-
         for (int i = 0; i < certificates.length; i++) {
             sumMark += this.certificates[i].getMark();
         }
         return sumMark;
     }
-
 }

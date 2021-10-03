@@ -25,7 +25,6 @@ public class EnrollmentService {
     public SpecializationPlan[] getAvailableSpecialisations(Entrant entrant, Double educationMaxCost) {
         SpecializationPlan[] availablePlans = new SpecializationPlan[specializationPlans.length];
         int specIndex = 0;
-
         for (int i = 0; i < specializationPlans.length; i++) {
             if (specializationPlans[i].getPaidPlacesAmount() > 0) {
                 if (specializationPlans[i].getPaidCost() <= educationMaxCost) {

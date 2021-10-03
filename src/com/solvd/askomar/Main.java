@@ -7,10 +7,8 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Main {
-
     public static void main(String[] args) {
         City[] cities = new City[2];
-
         cities[0] = new City("Minsk");
         cities[1] = new City("Pinsk");
 
@@ -45,7 +43,6 @@ public class Main {
         departments[1].setSpecializations(new Specialization[] {specializations[3], specializations[4], specializations[5]});
 
         SpecializationPlan[] specializationPlans = new SpecializationPlan[specializations.length];
-
         specializationPlans[0] = new SpecializationPlan(specializations[0], 10, 200);
         specializationPlans[1] = new SpecializationPlan(specializations[1], 20, 140);
         specializationPlans[2] = new SpecializationPlan(specializations[2], 40, 31, 500.12);

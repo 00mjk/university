@@ -79,7 +79,6 @@ public class SpecializationPlan {
         } else {
                 return this.specialization.getName() + " Free placesAmount: " + this.freePlacesAmount;
         }
-
     }
 
     public String getInfo(boolean isPaid, boolean withDateStamp) {

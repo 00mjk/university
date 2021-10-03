@@ -7,17 +7,17 @@ public class University {
 
   private String name;
   private City city;
-  private Date foundationDate;
+  private Date basedAt;
   private Department[] departments;
 
-  public University(String name, City city, Date foundationDate) {
+  public University(String name, City city, Date basedAt) {
     this.name = name;
     this.city = city;
-    this.foundationDate = foundationDate;
+    this.basedAt = basedAt;
   }
 
-  public University(String name, City city, Date foundationDate, Department[] departments) {
-    this(name, city, foundationDate);
+  public University(String name, City city, Date basedAt, Department[] departments) {
+    this(name, city, basedAt);
     this.departments = departments;
   }
 
@@ -37,12 +37,12 @@ public class University {
     this.city = city;
   }
 
-  public Date getFoundationDate() {
-    return foundationDate;
+  public Date getBasedAt() {
+    return basedAt;
   }
 
-  public void setFoundationDate(Date foundationDate) {
-    this.foundationDate = foundationDate;
+  public void setBasedAt(Date basedAt) {
+    this.basedAt = basedAt;
   }
 
   public Department[] getDepartaments() {

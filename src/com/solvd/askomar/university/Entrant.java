@@ -27,9 +27,9 @@ public class Entrant {
       String surname,
       String name,
       String patronymic,
-      LocalDateTime birthDateTime,
+      LocalDateTime dateOfBirth,
       Certificate[] certificates) {
-    this(surname, name, birthDateTime, certificates);
+    this(surname, name, dateOfBirth, certificates);
     this.patronymic = patronymic;
   }
 

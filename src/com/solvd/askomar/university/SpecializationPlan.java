@@ -77,11 +77,11 @@ public class SpecializationPlan {
         if(isPaid) {
             return this.specialization.getName() + "Paid places amount: " + this.paidPlacesAmount + " Cost: " + this.paidCost;
         } else {
-                return this.specialization.getName() + " Free placesAmount: " + this.freePlacesAmount;
+            return this.specialization.getName() + " Free placesAmount: " + this.freePlacesAmount;
         }
     }
 
     public String getInfo(boolean isPaid, boolean withDateStamp) {
-        return  this.getInfo(isPaid) + " DateStamp: " + new Date().toString();
+        return this.getInfo(isPaid) + " DateStamp: " + new Date().toString();
     }
 }

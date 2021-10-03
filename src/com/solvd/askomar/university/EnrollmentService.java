@@ -2,8 +2,8 @@ package com.solvd.askomar.university;
 
 public class EnrollmentService {
 
-    SpecializationPlan[] specializationPlans;
-    EntrantForm[] entrantForms;
+    private SpecializationPlan[] specializationPlans;
+    private EntrantForm[] entrantForms;
 
     public EnrollmentService(SpecializationPlan[] specializationPlans) {
         this.specializationPlans = specializationPlans;

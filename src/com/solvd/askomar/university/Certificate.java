@@ -8,7 +8,7 @@ public class Certificate {
   private Integer id;
   private Subject subject;
   private Integer mark;
-  private final LocalDateTime issueDateTime;
+  private LocalDateTime issueDateTime;
 
   public Certificate(Integer id, Subject subject, Integer mark) {
     this.id = id;

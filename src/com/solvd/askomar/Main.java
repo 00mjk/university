@@ -14,14 +14,12 @@ public class Main {
         cities[0] = new City("Minsk");
         cities[1] = new City("Pinsk");
 
-
         Subject[] subjects = new Subject[5];
         subjects[0] = new Subject("Mathematics");
         subjects[1] = new Subject("Russian Language");
         subjects[2] = new Subject("Belarussian Language");
         subjects[3] = new Subject("History");
         subjects[4] = new Subject("Informatics");
-
 
         EmployeePosition employeePosition = new EmployeePosition("Manager");
         Employee employee = new Employee("Kamarouski", "Andrei", "Sergeevich", employeePosition);
@@ -75,12 +73,8 @@ public class Main {
         }
 
         System.out.println("Can entrant go to: "  + specializationPlans[2].getSpecialization().getName() + " - " + enrollmentService.isCanEnrollToSpecialisation(entrant, specializationPlans[2]));
-
         System.out.println("\n");
         System.out.println(university.getFullUnivercityInfo());
         System.out.println(university.getDepartamentsByString());
-
-
     }
-
 }

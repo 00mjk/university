@@ -11,14 +11,14 @@ public class Entrant {
     private String surname;
     private String name;
     private String patronymic;
-    private LocalDateTime birthDateTime;
+    private LocalDateTime dateOfBirth;
     private Certificate[] certificates;
 
-    public Entrant(String surname, String name, LocalDateTime birthDateTime,  Certificate... certificates) {
+    public Entrant(String surname, String name, LocalDateTime dateOfBirth,  Certificate... certificates) {
         this.id = ++entrantAmount;
         this.surname = surname;
         this.name = name;
-        this.birthDateTime = birthDateTime;
+        this.dateOfBirth = dateOfBirth;
         this.certificates = certificates;
     }
 
@@ -32,7 +32,7 @@ public class Entrant {
     }
 
     public Integer getId() {
-        return this.getId();
+        return this.id;
     }
 
     public String getSurname() {
@@ -57,6 +57,14 @@ public class Entrant {
 
     public void setPatronymic(String patronymic) {
         this.patronymic = patronymic;
+    }
+
+    public LocalDateTime getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDateTime dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public Certificate[] getCertificates() {

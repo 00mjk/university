@@ -1,10 +1,5 @@
 package com.solvd.askomar.university;
 
-import com.solvd.askomar.university.Entrant;
-import com.solvd.askomar.university.EntrantForm;
-import com.solvd.askomar.university.Specialization;
-import com.solvd.askomar.university.SpecializationPlan;
-
 public class EnrollmentService {
 
     SpecializationPlan[] specializationPlans;
@@ -32,7 +27,7 @@ public class EnrollmentService {
         int specIndex = 0;
 
         for (int i = 0; i < specializationPlans.length; i++) {
-            if (specializationPlans[i].getPaidPlaceAmount() > 0) {
+            if (specializationPlans[i].getPaidPlacesAmount() > 0) {
                 if (specializationPlans[i].getPaidCost() <= educationMaxCost) {
                     availablePlans[specIndex] = specializationPlans[i];
                     specIndex++;

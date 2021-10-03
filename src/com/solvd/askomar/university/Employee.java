@@ -6,12 +6,12 @@ public class Employee {
     private String surname;
     private String name;
     private String patronymic;
-    private EmployeePosition employeePosition;
+    private EmployeePosition position;
 
-    public Employee(String surname, String name, EmployeePosition employeePosition) {
+    public Employee(String surname, String name, EmployeePosition position) {
         this.surname = surname;
         this.name = name;
-        this.employeePosition = employeePosition;
+        this.position = position;
     }
 
     public Employee(String surname, String name, String patronymic, EmployeePosition employeePosition) {
@@ -43,16 +43,16 @@ public class Employee {
         this.patronymic = patronymic;
     }
 
-    public EmployeePosition getEmployeePosition() {
-        return employeePosition;
+    public EmployeePosition getPosition() {
+        return position;
     }
 
-    public void setEmployeePosition(EmployeePosition employeePosition) {
-        this.employeePosition = employeePosition;
+    public void setPosition(EmployeePosition position) {
+        this.position = position;
     }
 
     public String getFullName() {
-        return this.surname + " " + this.name +  " " +(this.patronymic != null ? this.patronymic : "") + " " + this.employeePosition.getName();
+        return this.surname + " " + this.name +  " " +(this.patronymic != null ? this.patronymic : "") + " " + this.position.getName();
     }
 
     public void printFullNameToConsole() {

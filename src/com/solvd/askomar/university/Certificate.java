@@ -8,20 +8,20 @@ public class Certificate {
     private Integer id;
     private Subject subject;
     private Integer mark;
-    private LocalDateTime dateTime;
+    private LocalDateTime issueDateTime;
 
     public Certificate(Integer id, Subject subject, Integer mark) {
         this.id = id;
         this.subject = subject;
         this.mark = mark;
-        this.dateTime = LocalDateTime.now();
+        this.issueDateTime = LocalDateTime.now();
     }
 
-    public Certificate(Integer id, Subject subject, Integer mark, LocalDateTime dateTime) {
+    public Certificate(Integer id, Subject subject, Integer mark, LocalDateTime issueDateTime) {
         this.id = id;
         this.subject = subject;
         this.mark = mark;
-        this.dateTime = dateTime;
+        this.issueDateTime = issueDateTime;
     }
 
     public Integer getId() {
@@ -48,7 +48,7 @@ public class Certificate {
         this.mark = mark;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public LocalDateTime getIssueDateTime() {
+        return issueDateTime;
     }
 }

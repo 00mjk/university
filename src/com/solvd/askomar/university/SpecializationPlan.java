@@ -6,22 +6,22 @@ public class SpecializationPlan {
 
     private Specialization specialization;
     private int freePlacesAmount;
-    private int paidPlaceAmount;
+    private int paidPlacesAmount;
     private int minMark;
     private Double paidCost;
-    private Date date;
+    private Date lastUpdate;
 
     public SpecializationPlan(Specialization specialization, Integer freePlacesAmount, Integer minMark) {
         this.specialization = specialization;
         this.freePlacesAmount = freePlacesAmount;
         this.minMark = minMark;
-        this.date = new Date();
+        this.lastUpdate = new Date();
     }
 
     public SpecializationPlan(Specialization specialization, Integer freePlacesAmount, Integer paidPlaceAmount, Double paidCost) {
         this.specialization = specialization;
         this.freePlacesAmount = freePlacesAmount;
-        this.paidPlaceAmount = paidPlaceAmount;
+        this.paidPlacesAmount = paidPlaceAmount;
         this.paidCost = paidCost;
     }
 
@@ -41,12 +41,12 @@ public class SpecializationPlan {
         this.freePlacesAmount = freePlacesAmount;
     }
 
-    public Integer getPaidPlaceAmount() {
-        return paidPlaceAmount;
+    public Integer getPaidPlacesAmount() {
+        return paidPlacesAmount;
     }
 
-    public void setPaidPlaceAmount(Integer paidPlaceAmount) {
-        this.paidPlaceAmount = paidPlaceAmount;
+    public void setPaidPlacesAmount(Integer paidPlacesAmount) {
+        this.paidPlacesAmount = paidPlacesAmount;
     }
 
     public Double getPaidCost() {
@@ -57,12 +57,12 @@ public class SpecializationPlan {
         this.paidCost = paidCost;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getLastUpdate() {
+        return lastUpdate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setLastUpdate(Date lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 
     public Integer getMinMark() {
@@ -75,7 +75,7 @@ public class SpecializationPlan {
 
     public String getInfo(boolean isPaid) {
         if(isPaid) {
-            return this.specialization.getName() + "Paid places amount: " + this.paidPlaceAmount + " Cost: " + this.paidCost;
+            return this.specialization.getName() + "Paid places amount: " + this.paidPlacesAmount + " Cost: " + this.paidCost;
         } else {
                 return this.specialization.getName() + " Free placesAmount: " + this.freePlacesAmount;
         }

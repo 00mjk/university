@@ -9,6 +9,22 @@ public class EnrollmentService {
         this.specializationPlans = specializationPlans;
     }
 
+    public SpecializationPlan[] getSpecializationPlans() {
+        return specializationPlans;
+    }
+
+    public void setSpecializationPlans(SpecializationPlan[] specializationPlans) {
+        this.specializationPlans = specializationPlans;
+    }
+
+    public EntrantForm[] getEntrantForms() {
+        return entrantForms;
+    }
+
+    public void setEntrantForms(EntrantForm[] entrantForms) {
+        this.entrantForms = entrantForms;
+    }
+
     public SpecializationPlan[] getAvailableSpecialisations(Entrant entrant) {
         SpecializationPlan[] availablePlans = new SpecializationPlan[specializationPlans.length];
         int specIndex = 0;
@@ -20,7 +36,6 @@ public class EnrollmentService {
         }
         return availablePlans;
     }
-
 
     public SpecializationPlan[] getAvailableSpecialisations(Entrant entrant, Double educationMaxCost) {
         SpecializationPlan[] availablePlans = new SpecializationPlan[specializationPlans.length];

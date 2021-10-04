@@ -6,14 +6,13 @@ import com.solvd.askomar.university.Specialization;
 
 import java.util.Arrays;
 
-/**
- * transl. Заявка на получение высшего образования 1-й ступени (Бакалариат)
- */
+/** transl. Заявка на получение высшего образования 1-й ступени (Бакалариат) */
 public class BachelorEntrantForm extends EntrantForm {
 
   private Certificate[] certificates;
 
-  public BachelorEntrantForm(Entrant entrant, Specialization specialization, Boolean paid, Certificate[] certificates) {
+  public BachelorEntrantForm(
+      Entrant entrant, Specialization specialization, Boolean paid, Certificate[] certificates) {
     super(entrant, specialization, paid);
     this.certificates = certificates;
   }
@@ -26,7 +25,7 @@ public class BachelorEntrantForm extends EntrantForm {
     this.certificates = certificates;
   }
 
-  //TODO Refactor equals algorithm
+  // TODO Refactor equals algorithm
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -56,5 +55,13 @@ public class BachelorEntrantForm extends EntrantForm {
         this.getEntrant(),
         Arrays.toString(this.certificates),
         this.paid());
+  }
+
+  public Integer getTotalMark() {
+    Integer totalMark = 0;
+    for (Certificate certificate : this.certificates) {
+      totalMark += certificate.getMark();
+    }
+    return totalMark;
   }
 }

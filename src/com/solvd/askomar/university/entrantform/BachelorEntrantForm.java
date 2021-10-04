@@ -6,12 +6,16 @@ import com.solvd.askomar.university.Specialization;
 
 import java.util.Arrays;
 
+/**
+ * transl. Заявка на получение высшего образования 1-й ступени (Бакалариат)
+ */
 public class BachelorEntrantForm extends EntrantForm {
 
   private Certificate[] certificates;
 
-  public BachelorEntrantForm(Entrant entrant, Specialization specialization, Boolean paid) {
+  public BachelorEntrantForm(Entrant entrant, Specialization specialization, Boolean paid, Certificate[] certificates) {
     super(entrant, specialization, paid);
+    this.certificates = certificates;
   }
 
   public Certificate[] getCertificates() {

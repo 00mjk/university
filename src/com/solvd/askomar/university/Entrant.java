@@ -1,35 +1,28 @@
 package com.solvd.askomar.university;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.Objects;
 
-// transl. Абтуриент
+/** transl. Абитуриент */
 public class Entrant {
 
   private static Integer entrantAmount = 0;
 
-  private final Integer id;
+  private Integer id;
   private String surname;
   private String name;
   private String patronymic;
-  private LocalDateTime dateOfBirth;
-  private Certificate[] certificates;
+  private LocalDate dateOfBirth;
 
-  public Entrant(
-      String surname, String name, LocalDateTime dateOfBirth, Certificate[] certificates) {
+  public Entrant(String surname, String name, LocalDate dateOfBirth) {
     this.id = ++entrantAmount;
     this.surname = surname;
     this.name = name;
     this.dateOfBirth = dateOfBirth;
-    this.certificates = certificates;
   }
 
-  public Entrant(
-      String surname,
-      String name,
-      String patronymic,
-      LocalDateTime dateOfBirth,
-      Certificate[] certificates) {
-    this(surname, name, dateOfBirth, certificates);
+  public Entrant(String surname, String name, String patronymic, LocalDate dateOfBirth) {
+    this(surname, name, dateOfBirth);
     this.patronymic = patronymic;
   }
 
@@ -65,27 +58,36 @@ public class Entrant {
     this.patronymic = patronymic;
   }
 
-  public LocalDateTime getDateOfBirth() {
+  public LocalDate getDateOfBirth() {
     return dateOfBirth;
   }
 
-  public void setDateOfBirth(LocalDateTime dateOfBirth) {
+  public void setDateOfBirth(LocalDate dateOfBirth) {
     this.dateOfBirth = dateOfBirth;
   }
 
-  public Certificate[] getCertificates() {
-    return certificates;
+  // TODO change equals algorithm
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Entrant entrant = (Entrant) o;
+    return Objects.equals(id, entrant.id)
+        && Objects.equals(surname, entrant.surname)
+        && Objects.equals(name, entrant.name)
+        && Objects.equals(patronymic, entrant.patronymic)
+        && Objects.equals(dateOfBirth, entrant.dateOfBirth);
   }
 
-  public void setCertificates(Certificate[] certificates) {
-    this.certificates = certificates;
+  // TODO change hashcode algorihtm
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, surname, name, patronymic, dateOfBirth);
   }
 
-  public Integer getSumMark() {
-    int sumMark = 0;
-    for (int i = 0; i < certificates.length; i++) {
-      sumMark += this.certificates[i].getMark();
-    }
-    return sumMark;
+  @Override
+  public String toString() {
+    return String.format(
+        "%s %s %s %s", this.surname, this.name, this.patronymic, this.dateOfBirth.toString());
   }
 }

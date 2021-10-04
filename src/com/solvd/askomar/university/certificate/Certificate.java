@@ -1,25 +1,21 @@
-package com.solvd.askomar.university;
+package com.solvd.askomar.university.certificate;
 
 import java.time.LocalDateTime;
 
-// transl. Аттестат
-public class Certificate {
+public abstract class Certificate {
 
   private Integer id;
-  private Subject subject;
   private Integer mark;
   private LocalDateTime issuedAt;
 
-  public Certificate(Integer id, Subject subject, Integer mark) {
+  public Certificate(Integer id, Integer mark) {
     this.id = id;
-    this.subject = subject;
     this.mark = mark;
     this.issuedAt = LocalDateTime.now();
   }
 
-  public Certificate(Integer id, Subject subject, Integer mark, LocalDateTime issuedAt) {
+  public Certificate(Integer id, Integer mark, LocalDateTime issuedAt) {
     this.id = id;
-    this.subject = subject;
     this.mark = mark;
     this.issuedAt = issuedAt;
   }
@@ -30,14 +26,6 @@ public class Certificate {
 
   public void setId(Integer id) {
     this.id = id;
-  }
-
-  public Subject getSubject() {
-    return this.subject;
-  }
-
-  public void setSubject(Subject subject) {
-    this.subject = subject;
   }
 
   public Integer getMark() {

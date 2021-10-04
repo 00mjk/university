@@ -1,17 +1,16 @@
 package com.solvd.askomar.university;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 // transl. Кафедра
 public class Department {
 
   private String name;
   private Specialization[] specializations;
 
-  public Department(String name) {
-    this.name = name;
-  }
-
   public Department(String name, Specialization[] specializations) {
-    this(name);
+    this.name = name;
     this.specializations = specializations;
   }
 
@@ -29,5 +28,31 @@ public class Department {
 
   public void setSpecializations(Specialization[] specializations) {
     this.specializations = specializations;
+  }
+
+  // TODO refactor hashcode algorithm
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Department that = (Department) o;
+    return Objects.equals(name, that.name) && Arrays.equals(specializations, that.specializations);
+  }
+
+  // TODO refactor hashcode algorithm
+  @Override
+  public int hashCode() {
+    int result = Objects.hash(name);
+    result = 31 * result + Arrays.hashCode(specializations);
+    return result;
+  }
+
+  @Override
+  public String toString() {
+    final StringBuilder sb = new StringBuilder("Department{");
+    sb.append("name='").append(name).append('\'');
+    sb.append(", specializations=").append(Arrays.toString(specializations));
+    sb.append('}');
+    return sb.toString();
   }
 }

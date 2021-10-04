@@ -1,14 +1,17 @@
-package com.solvd.askomar.university;
+package com.solvd.askomar.university.entrantform;
 
-public class EntrantForm {
+import com.solvd.askomar.university.Entrant;
+import com.solvd.askomar.university.Specialization;
 
-  public static Integer entrantFormsAmount = 0;
+public abstract class EntrantForm {
+
+  public static Integer amount = 0;
 
   private Entrant entrant;
   private Specialization specialization;
-  private boolean paid;
+  private Boolean paid;
 
-  public EntrantForm(Entrant entrant, Specialization specialization, boolean paid) {
+  public EntrantForm(Entrant entrant, Specialization specialization, Boolean paid) {
     this.entrant = entrant;
     this.specialization = specialization;
     this.paid = paid;
@@ -30,11 +33,11 @@ public class EntrantForm {
     this.specialization = specialization;
   }
 
-  public boolean isPaid() {
+  public Boolean paid() {
     return paid;
   }
 
-  public void setPaid(boolean paid) {
+  public void setPaid(Boolean paid) {
     this.paid = paid;
   }
 }

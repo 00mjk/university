@@ -1,5 +1,7 @@
 package com.solvd.askomar.university;
 
+import java.util.Objects;
+
 // transl. Сотрудник
 public class Employee {
 
@@ -51,17 +53,26 @@ public class Employee {
     this.position = position;
   }
 
-  public String getFullName() {
-    return this.surname
-        + " "
-        + this.name
-        + " "
-        + (this.patronymic != null ? this.patronymic : "")
-        + " "
-        + this.position.getName();
+  // TODO refactor equals algorithm
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Employee employee = (Employee) o;
+    return Objects.equals(surname, employee.surname)
+        && Objects.equals(name, employee.name)
+        && Objects.equals(patronymic, employee.patronymic)
+        && Objects.equals(position, employee.position);
   }
 
-  public void printFullNameToConsole() {
-    System.out.println(getFullName());
+  // TODO refactror hashcode algorithm
+  @Override
+  public int hashCode() {
+    return Objects.hash(surname, name, patronymic, position);
+  }
+
+  @Override
+  public String toString() {
+    return String.format("%s %s %s - %s", this.surname, this.name, this.patronymic, this.position);
   }
 }

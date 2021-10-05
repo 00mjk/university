@@ -44,4 +44,9 @@ public class Employee extends Person {
     return String.format(
         "%s %s %s - %s", this.getSurname(), this.getName(), this.getPatronymic(), this.position);
   }
+
+  @Override
+  public String shortNameFormat() {
+    return String.format("%s. - %s", super.shortNameFormat(), this.position);
+  }
 }

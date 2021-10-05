@@ -1,6 +1,4 @@
-package com.solvd.askomar.university.specialplan;
-
-import com.solvd.askomar.university.Specialization;
+package com.solvd.askomar.university;
 
 /** transl. План заочного приема */
 public class DistanceSpecializationPlan extends SpecializationPlan {

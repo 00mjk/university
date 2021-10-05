@@ -58,4 +58,9 @@ public class Entrant extends Person {
         "%s %s %s %s",
         this.getSurname(), this.getName(), this.getPatronymic(), this.dateOfBirth.toString());
   }
+
+  @Override
+  public String shortNameFormat() {
+    return String.format("%s. - %s", super.shortNameFormat(), "entrant");
+  }
 }

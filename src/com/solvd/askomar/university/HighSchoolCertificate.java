@@ -1,11 +1,11 @@
-package com.solvd.askomar.university.certificate;
+package com.solvd.askomar.university;
 
 import java.time.LocalDateTime;
 
 public class HighSchoolCertificate extends Certificate {
 
   public HighSchoolCertificate(Integer id, Integer mark) {
-    super(id, mark);
+    super(id, fromTenToHundredMark(mark));
   }
 
   public HighSchoolCertificate(Integer id, Integer mark, LocalDateTime issuedAt) {

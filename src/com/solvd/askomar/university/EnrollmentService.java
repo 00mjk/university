@@ -1,80 +1,66 @@
 package com.solvd.askomar.university;
 
-import com.solvd.askomar.university.entrantform.EntrantForm;
-import com.solvd.askomar.university.specialplan.SpecializationPlan;
-
 public class EnrollmentService {
-//
-//  private SpecializationPlan[] specializationPlans;
-//  private EntrantForm[] entrantForms;
-//
-//  public EnrollmentService(SpecializationPlan[] specializationPlans) {
-//    this.specializationPlans = specializationPlans;
-//  }
-//
-//  public SpecializationPlan[] getSpecializationPlans() {
-//    return specializationPlans;
-//  }
-//
-//  public void setSpecializationPlans(SpecializationPlan[] specializationPlans) {
-//    this.specializationPlans = specializationPlans;
-//  }
-//
-//  public EntrantForm[] getEntrantForms() {
-//    return entrantForms;
-//  }
-//
-//  public void setEntrantForms(EntrantForm[] entrantForms) {
-//    this.entrantForms = entrantForms;
-//  }
-//
-//  public SpecializationPlan[] getAvailableSpecialisations(String specialPlanType) {
-//    SpecializationPlan[] availablePlans = new SpecializationPlan[specializationPlans.length];
-//    int specIndex = 0;
-//    for (int i = 0; i < specializationPlans.length; i++) {
-//      if (specializationPlans[i].getFreePlacesAmount() > 0
-//          && entrant.getSumMark() >= specializationPlans[i].getMinMark()) {
-//        availablePlans[specIndex] = specializationPlans[i];
-//        specIndex++;
-//      }
-//    }
-//    return availablePlans;
-//  }
-//
-//  public SpecializationPlan[] getAvailableSpecialisations(
-//      Entrant entrant, Double educationMaxCost) {
-//    SpecializationPlan[] availablePlans = new SpecializationPlan[specializationPlans.length];
-//    int specIndex = 0;
-//    for (int i = 0; i < specializationPlans.length; i++) {
-//      if (specializationPlans[i].getPaidPlacesAmount() > 0) {
-//        if (specializationPlans[i].getCost() <= educationMaxCost) {
-//          availablePlans[specIndex] = specializationPlans[i];
-//          specIndex++;
-//        }
-//      }
-//    }
-//    return availablePlans;
-//  }
-//
-//  public boolean isCanEnrollToSpecialisation(
-//      Entrant entrant, SpecializationPlan specializationPlan) {
-//    boolean canEnrollToSpec = false;
-//    SpecializationPlan[] availableSpecialisations = getAvailableSpecialisations(entrant);
-//    for (int i = 0; i < availableSpecialisations.length; i++) {
-//      if (availableSpecialisations[i] == specializationPlan) {
-//        canEnrollToSpec = true;
-//      }
-//    }
-//    return canEnrollToSpec;
-//  }
-//
-//  public boolean enrollSpecialisation(Entrant entrant, SpecializationPlan specializationPlan) {
-//    boolean canEnroll = isCanEnrollToSpecialisation(entrant, specializationPlan);
-//    if (canEnroll) {
-//      EntrantForm entrantForm = new EntrantForm(entrant, specializationPlan.getSpecialization(), false);
-//      this.entrantForms[EntrantForm.amount] = entrantForm;
-//      EntrantForm.amount++;
-//    }
-//    return canEnroll;
-// }
+
+  private SpecializationPlan[] specializationPlans;
+  private EntrantForm[] entrantForms;
+
+  public EnrollmentService(SpecializationPlan[] specializationPlans) {
+    this.specializationPlans = specializationPlans;
+  }
+
+  public SpecializationPlan[] getSpecializationPlans() {
+    return specializationPlans;
+  }
+
+  public void setSpecializationPlans(SpecializationPlan[] specializationPlans) {
+    this.specializationPlans = specializationPlans;
+  }
+
+  public EntrantForm[] getEntrantForms() {
+    return entrantForms;
+  }
+
+  public void setEntrantForms(EntrantForm[] entrantForms) {
+    this.entrantForms = entrantForms;
+  }
+
+  /** @param specType Possible inputs: 'full', 'distance' */
+  public SpecializationPlan[] getAvailableSpecialisations(String specType) {
+    SpecializationPlan[] availablePlans = new SpecializationPlan[specializationPlans.length];
+    int plansIndex = 0;
+    String specTypeClass;
+    switch (specType) {
+      case "full":
+        specTypeClass = "FullTimeSpecializationPlan";
+        break;
+      case "distance":
+        specTypeClass = "DistanceSpecializationPlan";
+        break;
+      default:
+        specTypeClass = "";
+    }
+    for (SpecializationPlan sp : specializationPlans) {
+      if (sp.getClass().getSimpleName().equals(specTypeClass)) {
+        availablePlans[plansIndex] = sp;
+        plansIndex++;
+      }
+    }
+    return availablePlans;
+  }
+
+  public SpecializationPlan[] getAvailableSpecialisations(Integer mark) {
+    SpecializationPlan[] availableSpecByType =
+        this.getAvailableSpecialisations("FullTimeSpecializationPlan");
+    FullTimeSpecializationPlan[] availableSpecByMark =
+        new FullTimeSpecializationPlan[availableSpecByType.length];
+    int spIndex = 0;
+    for (SpecializationPlan sp : availableSpecByType) {
+      if (((FullTimeSpecializationPlan) sp).getMinMark().equals(mark)) {
+        availableSpecByMark[spIndex] = (FullTimeSpecializationPlan) sp;
+        spIndex++;
+      }
+    }
+    return availableSpecByMark;
+  }
 }

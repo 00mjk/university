@@ -1,7 +1,4 @@
-package com.solvd.askomar.university.educatinstitut;
-
-import com.solvd.askomar.university.City;
-import com.solvd.askomar.university.Department;
+package com.solvd.askomar.university;
 
 import java.util.Arrays;
 import java.util.Date;

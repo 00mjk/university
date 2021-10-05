@@ -1,7 +1,4 @@
-package com.solvd.askomar.university.entrantform;
-
-import com.solvd.askomar.university.Entrant;
-import com.solvd.askomar.university.Specialization;
+package com.solvd.askomar.university;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -14,11 +11,12 @@ public class MasterEntrantForm extends EntrantForm {
 
   public MasterEntrantForm(
       Entrant entrant,
-      Specialization specialization,
+      SpecializationPlan specializationPlan,
       Boolean paid,
+      Employee issuedBy,
       Specialization bachelorsSpec,
       LocalDate finishedDate) {
-    super(entrant, specialization, paid);
+    super(entrant, specializationPlan, paid, issuedBy);
     this.bachelorsSpec = bachelorsSpec;
     this.finishedDate = finishedDate;
   }

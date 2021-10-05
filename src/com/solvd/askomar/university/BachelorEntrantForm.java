@@ -1,8 +1,4 @@
-package com.solvd.askomar.university.entrantform;
-
-import com.solvd.askomar.university.Entrant;
-import com.solvd.askomar.university.Specialization;
-import com.solvd.askomar.university.certificate.Certificate;
+package com.solvd.askomar.university;
 
 import java.util.Arrays;
 
@@ -12,7 +8,7 @@ public class BachelorEntrantForm extends EntrantForm {
   private Certificate[] certificates;
 
   public BachelorEntrantForm(
-      Entrant entrant, Specialization specialization, Boolean paid, Certificate[] certificates) {
+      Entrant entrant, Specialization specialization, boolean paid, Certificate[] certificates) {
     super(entrant, specialization, paid);
     this.certificates = certificates;
   }

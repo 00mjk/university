@@ -1,6 +1,4 @@
-package com.solvd.askomar.university.specialplan;
-
-import com.solvd.askomar.university.Specialization;
+package com.solvd.askomar.university;
 
 import java.util.Date;
 import java.util.Objects;

@@ -1,6 +1,4 @@
-package com.solvd.askomar.university.specialplan;
-
-import com.solvd.askomar.university.Specialization;
+package com.solvd.askomar.university;
 
 import java.util.Objects;
 
@@ -12,6 +10,22 @@ public class FullTimeSpecializationPlan extends SpecializationPlan {
   public FullTimeSpecializationPlan(
       Specialization specialization, Integer freePlacesAmount, Integer minMark) {
     super(specialization);
+    this.freePlacesAmount = freePlacesAmount;
+    this.minMark = minMark;
+  }
+
+  public FullTimeSpecializationPlan(
+      Specialization specialization, Integer paidPlacesAmount, Double cost) {
+    super(specialization, paidPlacesAmount, cost);
+  }
+
+  public FullTimeSpecializationPlan(
+      Specialization specialization,
+      Integer paidPlacesAmount,
+      Double cost,
+      Integer freePlacesAmount,
+      Integer minMark) {
+    super(specialization, paidPlacesAmount, cost);
     this.freePlacesAmount = freePlacesAmount;
     this.minMark = minMark;
   }

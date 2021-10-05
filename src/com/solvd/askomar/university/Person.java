@@ -62,4 +62,14 @@ public class Person {
   public String toString() {
     return String.format("%s %s %s", this.surname, this.name, this.patronymic);
   }
+
+  public String shortNameFormat() {
+    String resultString;
+    if (!Objects.isNull(this.patronymic)) {
+      resultString = String.format("%c.%c. %s", patronymic.charAt(0), name.charAt(0), this.surname);
+    } else {
+      resultString = String.format("%c. %s", name.charAt(0), this.surname);
+    }
+    return resultString;
+  }
 }

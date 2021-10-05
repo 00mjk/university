@@ -1,4 +1,4 @@
-package com.solvd.askomar.university.certificate;
+package com.solvd.askomar.university;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

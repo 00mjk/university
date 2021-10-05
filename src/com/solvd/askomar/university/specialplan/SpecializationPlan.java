@@ -3,6 +3,7 @@ package com.solvd.askomar.university.specialplan;
 import com.solvd.askomar.university.Specialization;
 
 import java.util.Date;
+import java.util.Objects;
 
 public abstract class SpecializationPlan {
 
@@ -52,5 +53,28 @@ public abstract class SpecializationPlan {
 
   public void setLastUpdate(Date lastUpdate) {
     this.lastUpdate = lastUpdate;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SpecializationPlan that = (SpecializationPlan) o;
+    return paidPlacesAmount == that.paidPlacesAmount
+        && Objects.equals(specialization, that.specialization)
+        && Objects.equals(cost, that.cost)
+        && Objects.equals(lastUpdate, that.lastUpdate);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(specialization, paidPlacesAmount, cost, lastUpdate);
+  }
+
+  @Override
+  public String toString() {
+    return String.format(
+        "Specialisation plan:\n\tspecialisation - %s\n\tpaid places amount - %d\n\tcost - %f\n\tlast update - %s",
+        this.specialization, this.paidPlacesAmount, this.cost, this.lastUpdate);
   }
 }

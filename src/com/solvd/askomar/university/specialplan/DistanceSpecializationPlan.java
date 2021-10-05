@@ -11,9 +11,17 @@ public class DistanceSpecializationPlan extends SpecializationPlan {
   }
 
   @Override
+  public boolean equals(Object o) {
+    return super.equals(o);
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode();
+  }
+
+  @Override
   public String toString() {
-    return String.format(
-        "Distance Specialization Plan:\n\tSpecialisation: %s\n\tPaid places amount: %d\n\tCost: %f",
-        this.getSpecialization(), this.getPaidPlacesAmount(), this.getCost());
+    return String.format("%s\n\ttype - distance", super.toString());
   }
 }

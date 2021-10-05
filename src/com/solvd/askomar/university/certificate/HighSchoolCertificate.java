@@ -13,8 +13,18 @@ public class HighSchoolCertificate extends Certificate {
   }
 
   @Override
+  public boolean equals(Object o) {
+    return super.equals(o);
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode();
+  }
+
+  @Override
   public String toString() {
-    return String.format("High School Certificate: %s mark", this.getMark());
+    return String.format("%s\n\ttype - High school certificate", super.toString());
   }
 
   @Override

@@ -18,7 +18,6 @@ public class EmployeePosition {
     this.name = name;
   }
 
-  // TODO refactor equals algorihm
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -27,10 +26,9 @@ public class EmployeePosition {
     return Objects.equals(name, that.name);
   }
 
-  // TODO refactor hashcode algorithm
   @Override
   public int hashCode() {
-    return Objects.hash(name);
+    return name.hashCode();
   }
 
   @Override

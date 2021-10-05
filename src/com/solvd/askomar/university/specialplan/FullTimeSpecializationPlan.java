@@ -32,29 +32,25 @@ public class FullTimeSpecializationPlan extends SpecializationPlan {
     this.minMark = minMark;
   }
 
-  // TODO refactor equals algorithm
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+    if (!super.equals(o)) return false;
     FullTimeSpecializationPlan that = (FullTimeSpecializationPlan) o;
     return Objects.equals(freePlacesAmount, that.freePlacesAmount)
         && Objects.equals(minMark, that.minMark);
   }
 
-  // TODO refacttor hashcode algorithm
   @Override
   public int hashCode() {
-    return Objects.hash(freePlacesAmount, minMark);
+    return Objects.hash(super.hashCode(), freePlacesAmount, minMark);
   }
 
   @Override
   public String toString() {
-    return "FullTimeSpecializationPlan{"
-        + "freePlacesAmount="
-        + freePlacesAmount
-        + ", minMark="
-        + minMark
-        + '}';
+    return String.format(
+        "%s\n\ttype - full time\n\tfree places amount - %d\n\tminimal mark - %d",
+        super.toString(), this.freePlacesAmount, this.minMark);
   }
 }

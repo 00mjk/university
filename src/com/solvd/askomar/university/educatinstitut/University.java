@@ -29,7 +29,6 @@ public class University extends EducationalInstitution {
     this.departments = departments;
   }
 
-  // TODO refactor equals algorithm
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -39,7 +38,6 @@ public class University extends EducationalInstitution {
     return Arrays.equals(departments, that.departments);
   }
 
-  // TODO refactor hashcode aglorithm
   @Override
   public int hashCode() {
     int result = super.hashCode();
@@ -49,7 +47,8 @@ public class University extends EducationalInstitution {
 
   @Override
   public String toString() {
-    return "University{" + "departments=" + Arrays.toString(departments) + '}';
+    return String.format(
+        "%s\n\tDepartments: - %s", super.toString(), Arrays.toString(this.departments));
   }
 
   @Override

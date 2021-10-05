@@ -39,31 +39,25 @@ public class MasterEntrantForm extends EntrantForm {
     this.finishedDate = finishedDate;
   }
 
-  // TODO refactor equals algorithm
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+    if (!super.equals(o)) return false;
     MasterEntrantForm that = (MasterEntrantForm) o;
     return Objects.equals(bachelorsSpec, that.bachelorsSpec)
         && Objects.equals(finishedDate, that.finishedDate);
   }
 
-  // TODO refactor hashode counting
   @Override
   public int hashCode() {
-    return Objects.hash(bachelorsSpec, finishedDate);
+    return Objects.hash(super.hashCode(), bachelorsSpec, finishedDate);
   }
 
-  // FIXME add format to date output
   @Override
   public String toString() {
     return String.format(
-        "Master's entrant form: \n\tEntrant: %s\n\tEducation specialisation -  %s,\n\tBachelor's specialisation: %s\n\tFinished at: %s\n\tPaid?: %b",
-        this.getEntrant(),
-        this.getSpecialization(),
-        this.bachelorsSpec,
-        this.finishedDate.toString(),
-        this.paid());
+        "%s\n\ttype - master entrant form\n\tbachelor's specialisation - %s\n\tfinished by - %s",
+        super.toString(), this.bachelorsSpec, this.finishedDate);
   }
 }

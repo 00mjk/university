@@ -30,7 +30,6 @@ public class Department {
     this.specializations = specializations;
   }
 
-  // TODO refactor hashcode algorithm
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -39,7 +38,6 @@ public class Department {
     return Objects.equals(name, that.name) && Arrays.equals(specializations, that.specializations);
   }
 
-  // TODO refactor hashcode algorithm
   @Override
   public int hashCode() {
     int result = Objects.hash(name);

@@ -3,6 +3,7 @@ package com.solvd.askomar.university.educatinstitut;
 import com.solvd.askomar.university.City;
 
 import java.util.Date;
+import java.util.Objects;
 
 public abstract class EducationalInstitution {
 
@@ -42,6 +43,28 @@ public abstract class EducationalInstitution {
 
   public void setCity(City city) {
     this.city = city;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    EducationalInstitution that = (EducationalInstitution) o;
+    return Objects.equals(name, that.name)
+        && Objects.equals(basedDate, that.basedDate)
+        && Objects.equals(city, that.city);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, basedDate, city);
+  }
+
+  @Override
+  public String toString() {
+    return String.format(
+        "Educational institution:\n\tname - %s\n\tBased in - %s\n\tCity - %s",
+        this.name, this.basedDate, this.city);
   }
 
   public abstract String getEducationalInstitutionType();

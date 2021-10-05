@@ -1,6 +1,7 @@
 package com.solvd.askomar.university.certificate;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public abstract class Certificate {
 
@@ -38,6 +39,26 @@ public abstract class Certificate {
 
   public LocalDateTime getIssuedAt() {
     return issuedAt;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Certificate that = (Certificate) o;
+    return Objects.equals(id, that.id)
+        && Objects.equals(mark, that.mark)
+        && Objects.equals(issuedAt, that.issuedAt);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, mark, issuedAt);
+  }
+
+  @Override
+  public String toString() {
+    return String.format("Certificate:\n\tidentificator - %d\n\tmark - %d\n\tIssued at - %s");
   }
 
   public abstract String getCertificateType();

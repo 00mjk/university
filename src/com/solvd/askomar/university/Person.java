@@ -60,11 +60,6 @@ public class Person {
 
   @Override
   public String toString() {
-    final StringBuilder sb = new StringBuilder("Person{");
-    sb.append("surname='").append(surname).append('\'');
-    sb.append(", name='").append(name).append('\'');
-    sb.append(", patronymic='").append(patronymic).append('\'');
-    sb.append('}');
-    return sb.toString();
+    return String.format("%s %s %s", this.surname, this.name, this.patronymic);
   }
 }

@@ -1,15 +1,15 @@
 package com.solvd.askomar.university;
 
+import com.solvd.askomar.university.educatinstitut.EducationalInstitution;
 import com.solvd.askomar.university.specialplan.SpecializationPlan;
 
 public class InformationCommiteeService {
-  private SpecializationPlan[] specializationPlans;
 
-  public InformationCommiteeService(SpecializationPlan[] specializationPlans) {
-    this.specializationPlans = specializationPlans;
+  public String getSpecializationPlanInfo(SpecializationPlan specializationPlan) {
+    return specializationPlan.toString();
   }
 
-  public String getSpecializationPlanInfo(SpecializationPlan specialization) {
-    return specialization.toString();
+  public String getEducationIntstituteInfo(EducationalInstitution educationalInstitution) {
+    return educationalInstitution.toString();
   }
 }

@@ -25,7 +25,6 @@ public class Employee extends Person {
     this.position = position;
   }
 
-  // TODO refactor equals algorithm
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -35,7 +34,6 @@ public class Employee extends Person {
     return Objects.equals(position, employee.position);
   }
 
-  // TODO refactror hashcode algorithm
   @Override
   public int hashCode() {
     return Objects.hash(position);

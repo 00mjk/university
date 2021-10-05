@@ -38,7 +38,6 @@ public class Entrant extends Person {
     this.dateOfBirth = dateOfBirth;
   }
 
-  // TODO change equals algorithm
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -48,7 +47,6 @@ public class Entrant extends Person {
     return Objects.equals(id, entrant.id) && Objects.equals(dateOfBirth, entrant.dateOfBirth);
   }
 
-  // TODO change hashcode algorihtm
   @Override
   public int hashCode() {
     return Objects.hash(id, dateOfBirth);

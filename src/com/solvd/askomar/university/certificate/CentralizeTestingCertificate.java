@@ -28,26 +28,24 @@ public class CentralizeTestingCertificate extends Certificate {
     this.subject = subject;
   }
 
-  // TODO refactor equals algorithm
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+    if (!super.equals(o)) return false;
     CentralizeTestingCertificate that = (CentralizeTestingCertificate) o;
     return Objects.equals(subject, that.subject);
   }
 
-  // TODO refactor hashcode algorithm
   @Override
   public int hashCode() {
-    return Objects.hash(subject);
+    return Objects.hash(super.hashCode(), subject);
   }
 
   @Override
   public String toString() {
     return String.format(
-        "Centralize Testing Certificate:\n\tSubject: %s - %s mark",
-        this.subject.toString(), this.getMark());
+        "%s\n\ttype - Centralize Testing\n\tsuject - %s", super.toString(), this.subject);
   }
 
   @Override

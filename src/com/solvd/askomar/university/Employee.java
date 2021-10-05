@@ -36,7 +36,7 @@ public class Employee extends Person {
 
   @Override
   public int hashCode() {
-    return Objects.hash(position);
+    return Objects.hash(super.hashCode(), position);
   }
 
   @Override

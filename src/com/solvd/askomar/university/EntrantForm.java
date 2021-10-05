@@ -46,6 +46,14 @@ public abstract class EntrantForm {
     this.paid = paid;
   }
 
+  public Employee getIssuedBy() {
+    return issuedBy;
+  }
+
+  public void setIssuedBy(Employee issuedBy) {
+    this.issuedBy = issuedBy;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;

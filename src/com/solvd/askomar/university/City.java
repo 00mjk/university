@@ -18,7 +18,6 @@ public class City {
     this.name = name;
   }
 
-  // TODO refactor equals algorithm
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -27,7 +26,6 @@ public class City {
     return Objects.equals(name, city.name);
   }
 
-  // TODO refactor hashcode algorithm
   @Override
   public int hashCode() {
     return Objects.hash(name);

@@ -1,6 +1,6 @@
 package com.solvd.askomar.university.entrantform;
 
-import com.solvd.askomar.university.Certificate;
+import com.solvd.askomar.university.certificate.Certificate;
 import com.solvd.askomar.university.Entrant;
 import com.solvd.askomar.university.Specialization;
 

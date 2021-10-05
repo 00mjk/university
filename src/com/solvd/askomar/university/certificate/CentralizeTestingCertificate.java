@@ -49,4 +49,9 @@ public class CentralizeTestingCertificate extends Certificate {
         "Centralize Testing Certificate:\n\tSubject: %s - %s mark",
         this.subject.toString(), this.getMark());
   }
+
+  @Override
+  public String getCertificateType() {
+    return "Centralize Testing Certificate";
+  }
 }

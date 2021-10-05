@@ -15,6 +15,7 @@ public abstract class EntrantForm {
     this.entrant = entrant;
     this.specialization = specialization;
     this.paid = paid;
+    amount++;
   }
 
   public Entrant getEntrant() {
@@ -40,4 +41,6 @@ public abstract class EntrantForm {
   public void setPaid(Boolean paid) {
     this.paid = paid;
   }
+
+
 }

@@ -39,4 +39,6 @@ public abstract class Certificate {
   public LocalDateTime getIssuedAt() {
     return issuedAt;
   }
+
+  public abstract String getCertificateType();
 }

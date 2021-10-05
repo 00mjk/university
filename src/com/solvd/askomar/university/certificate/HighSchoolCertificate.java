@@ -17,6 +17,11 @@ public class HighSchoolCertificate extends Certificate {
     return String.format("High School Certificate: %s mark", this.getMark());
   }
 
+  @Override
+  public String getCertificateType() {
+    return "High School Certificate";
+  }
+
   private static Integer fromTenToHundredMark(Integer mark) {
     return mark * 10;
   }

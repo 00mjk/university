@@ -52,6 +52,11 @@ public class University extends EducationalInstitution {
     return "University{" + "departments=" + Arrays.toString(departments) + '}';
   }
 
+  @Override
+  public String getEducationalInstitutionType() {
+    return "University";
+  }
+
   public String getDepartamentsByString() {
     String resultString = "";
     for (int i = 0; i < departments.length; i++) {

@@ -43,4 +43,6 @@ public abstract class EducationalInstitution {
   public void setCity(City city) {
     this.city = city;
   }
+
+  public abstract String getEducationalInstitutionType();
 }

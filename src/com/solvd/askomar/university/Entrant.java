@@ -1,36 +1,25 @@
 package com.solvd.askomar.university;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.Objects;
 
-// transl. Абтуриент
-public class Entrant {
+/** transl. Абитуриент */
+public class Entrant extends Person {
 
   private static Integer entrantAmount = 0;
 
-  private final Integer id;
-  private String surname;
-  private String name;
-  private String patronymic;
-  private LocalDateTime dateOfBirth;
-  private Certificate[] certificates;
+  private Integer id;
+  private LocalDate dateOfBirth;
 
-  public Entrant(
-      String surname, String name, LocalDateTime dateOfBirth, Certificate[] certificates) {
+  public Entrant(String surname, String name, LocalDate dateOfBirth) {
+    super(surname, name);
     this.id = ++entrantAmount;
-    this.surname = surname;
-    this.name = name;
     this.dateOfBirth = dateOfBirth;
-    this.certificates = certificates;
   }
 
-  public Entrant(
-      String surname,
-      String name,
-      String patronymic,
-      LocalDateTime dateOfBirth,
-      Certificate[] certificates) {
-    this(surname, name, dateOfBirth, certificates);
-    this.patronymic = patronymic;
+  public Entrant(String surname, String name, String patronymic, LocalDate dateOfBirth) {
+    super(surname, name, patronymic);
+    this.dateOfBirth = dateOfBirth;
   }
 
   public static Integer getEntrantAmount() {
@@ -41,51 +30,37 @@ public class Entrant {
     return this.id;
   }
 
-  public String getSurname() {
-    return this.surname;
-  }
-
-  public void setSurname(String surname) {
-    this.surname = surname;
-  }
-
-  public String getName() {
-    return this.name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getPatronymic() {
-    return this.patronymic;
-  }
-
-  public void setPatronymic(String patronymic) {
-    this.patronymic = patronymic;
-  }
-
-  public LocalDateTime getDateOfBirth() {
+  public LocalDate getDateOfBirth() {
     return dateOfBirth;
   }
 
-  public void setDateOfBirth(LocalDateTime dateOfBirth) {
+  public void setDateOfBirth(LocalDate dateOfBirth) {
     this.dateOfBirth = dateOfBirth;
   }
 
-  public Certificate[] getCertificates() {
-    return certificates;
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    if (!super.equals(o)) return false;
+    Entrant entrant = (Entrant) o;
+    return Objects.equals(id, entrant.id) && Objects.equals(dateOfBirth, entrant.dateOfBirth);
   }
 
-  public void setCertificates(Certificate[] certificates) {
-    this.certificates = certificates;
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, dateOfBirth);
   }
 
-  public Integer getSumMark() {
-    int sumMark = 0;
-    for (int i = 0; i < certificates.length; i++) {
-      sumMark += this.certificates[i].getMark();
-    }
-    return sumMark;
+  @Override
+  public String toString() {
+    return String.format(
+        "%s %s %s %s",
+        this.getSurname(), this.getName(), this.getPatronymic(), this.dateOfBirth.toString());
+  }
+
+  @Override
+  public String shortNameFormat() {
+    return String.format("%s. - %s", super.shortNameFormat(), "entrant");
   }
 }

@@ -1,46 +1,20 @@
 package com.solvd.askomar.university;
 
-// transl. Сотрудник
-public class Employee {
+import java.util.Objects;
 
-  private String surname;
-  private String name;
-  private String patronymic;
+// transl. Сотрудник
+public class Employee extends Person {
+
   private EmployeePosition position;
 
   public Employee(String surname, String name, EmployeePosition position) {
-    this.surname = surname;
-    this.name = name;
+    super(surname, name);
     this.position = position;
   }
 
   public Employee(String surname, String name, String patronymic, EmployeePosition position) {
-    this(surname, name, position);
-    this.patronymic = patronymic;
-  }
-
-  public String getSurname() {
-    return surname;
-  }
-
-  public void setSurname(String surname) {
-    this.surname = surname;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getPatronymic() {
-    return patronymic;
-  }
-
-  public void setPatronymic(String patronymic) {
-    this.patronymic = patronymic;
+    super(surname, name, patronymic);
+    this.position = position;
   }
 
   public EmployeePosition getPosition() {
@@ -51,17 +25,28 @@ public class Employee {
     this.position = position;
   }
 
-  public String getFullName() {
-    return this.surname
-        + " "
-        + this.name
-        + " "
-        + (this.patronymic != null ? this.patronymic : "")
-        + " "
-        + this.position.getName();
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    if (!super.equals(o)) return false;
+    Employee employee = (Employee) o;
+    return Objects.equals(position, employee.position);
   }
 
-  public void printFullNameToConsole() {
-    System.out.println(getFullName());
+  @Override
+  public int hashCode() {
+    return Objects.hash(position);
+  }
+
+  @Override
+  public String toString() {
+    return String.format(
+        "%s %s %s - %s", this.getSurname(), this.getName(), this.getPatronymic(), this.position);
+  }
+
+  @Override
+  public String shortNameFormat() {
+    return String.format("%s. - %s", super.shortNameFormat(), this.position);
   }
 }

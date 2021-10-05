@@ -1,56 +1,56 @@
 package com.solvd.askomar.university;
 
+import java.util.Arrays;
 import java.util.Date;
 
 // transl. Университет
-public class University {
+public class University extends EducationalInstitution {
 
-  private String name;
-  private City city;
-  private Date basedAt;
   private Department[] departments;
 
-  public University(String name, City city, Date basedAt) {
-    this.name = name;
-    this.city = city;
-    this.basedAt = basedAt;
-  }
-
-  public University(String name, City city, Date basedAt, Department[] departments) {
-    this(name, city, basedAt);
+  public University(String name, Department[] departments) {
+    super(name);
     this.departments = departments;
   }
 
-  public String getName() {
-    return this.name;
+  public University(String name, Date basedDate, City city, Department[] departments) {
+    super(name, basedDate, city);
+    this.departments = departments;
   }
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public City getCity() {
-    return city;
-  }
-
-  public void setCity(City city) {
-    this.city = city;
-  }
-
-  public Date getBasedAt() {
-    return basedAt;
-  }
-
-  public void setBasedAt(Date basedAt) {
-    this.basedAt = basedAt;
-  }
-
-  public Department[] getDepartaments() {
+  public Department[] getDepartments() {
     return departments;
   }
 
-  public void setDepartaments(Department[] departments) {
+  public void setDepartments(Department[] departments) {
     this.departments = departments;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    if (!super.equals(o)) return false;
+    University that = (University) o;
+    return Arrays.equals(departments, that.departments);
+  }
+
+  @Override
+  public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + Arrays.hashCode(departments);
+    return result;
+  }
+
+  @Override
+  public String toString() {
+    return String.format(
+        "%s\n\tDepartments: - %s", super.toString(), Arrays.toString(this.departments));
+  }
+
+  @Override
+  public String getEducationalInstitutionType() {
+    return "University";
   }
 
   public String getDepartamentsByString() {
@@ -62,7 +62,7 @@ public class University {
   }
 
   public String getFullUnivercityInfo() {
-    String info = "University: " + this.name + "\n";
+    String info = "University: " + this.getName() + "\n";
     for (int i = 0; i < this.departments.length; i++) {
       info += "Department: " + this.departments[i].getName() + "\n";
       for (int j = 0; j < this.departments[i].getSpecializations().length; j++) {

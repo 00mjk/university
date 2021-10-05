@@ -1,25 +1,22 @@
 package com.solvd.askomar.university;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
-// transl. Аттестат
-public class Certificate {
+public abstract class Certificate {
 
   private Integer id;
-  private Subject subject;
   private Integer mark;
   private LocalDateTime issuedAt;
 
-  public Certificate(Integer id, Subject subject, Integer mark) {
+  public Certificate(Integer id, Integer mark) {
     this.id = id;
-    this.subject = subject;
     this.mark = mark;
     this.issuedAt = LocalDateTime.now();
   }
 
-  public Certificate(Integer id, Subject subject, Integer mark, LocalDateTime issuedAt) {
+  public Certificate(Integer id, Integer mark, LocalDateTime issuedAt) {
     this.id = id;
-    this.subject = subject;
     this.mark = mark;
     this.issuedAt = issuedAt;
   }
@@ -30,14 +27,6 @@ public class Certificate {
 
   public void setId(Integer id) {
     this.id = id;
-  }
-
-  public Subject getSubject() {
-    return this.subject;
-  }
-
-  public void setSubject(Subject subject) {
-    this.subject = subject;
   }
 
   public Integer getMark() {
@@ -51,4 +40,26 @@ public class Certificate {
   public LocalDateTime getIssuedAt() {
     return issuedAt;
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Certificate that = (Certificate) o;
+    return Objects.equals(id, that.id)
+        && Objects.equals(mark, that.mark)
+        && Objects.equals(issuedAt, that.issuedAt);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, mark, issuedAt);
+  }
+
+  @Override
+  public String toString() {
+    return String.format("Certificate:\n\tidentificator - %d\n\tmark - %d\n\tIssued at - %s");
+  }
+
+  public abstract String getCertificateType();
 }

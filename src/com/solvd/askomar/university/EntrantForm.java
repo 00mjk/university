@@ -1,18 +1,26 @@
 package com.solvd.askomar.university;
 
-public class EntrantForm {
+import java.util.Objects;
 
-  public static Integer entrantFormsAmount = 0;
+public abstract class EntrantForm {
+
+  public static Integer amount = 0;
 
   private Entrant entrant;
-  private Specialization specialization;
+  private SpecializationPlan specializationPlan;
   private boolean paid;
+  private Employee issuedBy;
 
-  public EntrantForm(Entrant entrant, Specialization specialization, boolean paid) {
+  public EntrantForm(
+      Entrant entrant, SpecializationPlan specializationPlan, boolean paid, Employee issuedBy) {
     this.entrant = entrant;
-    this.specialization = specialization;
+    this.specializationPlan = specializationPlan;
     this.paid = paid;
+    this.issuedBy = issuedBy;
+    amount++;
   }
+
+  public EntrantForm(Entrant entrant, Specialization specialization, Boolean paid) {}
 
   public Entrant getEntrant() {
     return entrant;
@@ -22,12 +30,12 @@ public class EntrantForm {
     this.entrant = entrant;
   }
 
-  public Specialization getSpecialization() {
-    return specialization;
+  public SpecializationPlan getSpecializationPlan() {
+    return specializationPlan;
   }
 
-  public void setSpecialization(Specialization specialization) {
-    this.specialization = specialization;
+  public void setSpecializationPlan(SpecializationPlan specializationPlan) {
+    this.specializationPlan = specializationPlan;
   }
 
   public boolean isPaid() {
@@ -36,5 +44,26 @@ public class EntrantForm {
 
   public void setPaid(boolean paid) {
     this.paid = paid;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    EntrantForm that = (EntrantForm) o;
+    return paid == that.paid
+        && Objects.equals(entrant, that.entrant)
+        && Objects.equals(specializationPlan, that.specializationPlan);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(entrant, specializationPlan, paid);
+  }
+
+  @Override
+  public String toString() {
+    return String.format(
+        "Entrant form:\n\t%s\n\t%s\n\tpaid - %b", this.entrant, this.specializationPlan, this.paid);
   }
 }

@@ -2,7 +2,7 @@ package com.solvd.askomar.university;
 
 import java.util.Arrays;
 
-/** transl. Заявка на получение высшего образования 1-й ступени (Бакалариат) */
+/** transl. Заявка на получение высшего образования 1-й ступени (Бакалавриат) */
 public class BachelorEntrantForm extends EntrantForm {
 
   private Certificate[] certificates;

@@ -16,8 +16,7 @@ public abstract class Certificate {
   }
 
   public Certificate(Integer id, Integer mark, LocalDateTime issuedAt) {
-    this.id = id;
-    this.mark = mark;
+    this(id, mark);
     this.issuedAt = issuedAt;
   }
 
@@ -39,6 +38,10 @@ public abstract class Certificate {
 
   public LocalDateTime getIssuedAt() {
     return issuedAt;
+  }
+
+  public void setIssuedAt(LocalDateTime issuedAt) {
+    this.issuedAt = issuedAt;
   }
 
   @Override

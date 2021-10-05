@@ -86,9 +86,9 @@ public class Main {
 
     // Polymorphism
     System.out.println("\n##### example of the operation of the control class #####");
-    InformationCommiteeService informationCommiteeService = new InformationCommiteeService();
-    System.out.println(informationCommiteeService.getEducationIntstituteInfo(university));
+    System.out.println(InformationCommiteeService.getEducationIntstituteInfo(university));
     System.out.println(
-        informationCommiteeService.getSpecializationPlanInfo(specializationPlans[3]));
+        InformationCommiteeService.getSpecializationPlanInfo(specializationPlans[3]));
+    System.out.println(InformationCommiteeService.getPersonShortName(employee));
   }
 }

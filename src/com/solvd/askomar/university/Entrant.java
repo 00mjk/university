@@ -49,7 +49,7 @@ public class Entrant extends Person {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, dateOfBirth);
+    return Objects.hash(super.hashCode(), id, dateOfBirth);
   }
 
   @Override

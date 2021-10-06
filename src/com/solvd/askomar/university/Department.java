@@ -3,7 +3,6 @@ package com.solvd.askomar.university;
 import java.util.Arrays;
 import java.util.Objects;
 
-// transl. Кафедра
 public class Department {
 
   private String name;

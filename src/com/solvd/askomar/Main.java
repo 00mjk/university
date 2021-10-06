@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Date;
 
 public class Main {
+
   public static void main(String[] args) {
     City[] cities = new City[3];
     cities[0] = new City("Minsk");

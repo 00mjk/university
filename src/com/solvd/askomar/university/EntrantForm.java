@@ -21,7 +21,6 @@ public abstract class EntrantForm {
         amount++;
     }
 
-
     public Entrant getEntrant() {
         return entrant;
     }

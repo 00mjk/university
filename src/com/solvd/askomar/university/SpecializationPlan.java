@@ -58,9 +58,7 @@ public abstract class SpecializationPlan {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SpecializationPlan that = (SpecializationPlan) o;
-        return paidPlacesAmount == that.paidPlacesAmount
-                && Objects.equals(specialization, that.specialization)
-                && Objects.equals(cost, that.cost)
+        return Objects.equals(specialization, that.specialization)
                 && Objects.equals(lastUpdate, that.lastUpdate);
     }
 

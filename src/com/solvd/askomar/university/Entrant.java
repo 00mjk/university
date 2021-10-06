@@ -43,7 +43,7 @@ public class Entrant extends Person {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Entrant entrant = (Entrant) o;
-        return Objects.equals(id, entrant.id) && Objects.equals(dateOfBirth, entrant.dateOfBirth);
+        return Objects.equals(id, entrant.id);
     }
 
     @Override

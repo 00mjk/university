@@ -34,7 +34,7 @@ public class Department {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Department that = (Department) o;
-    return Objects.equals(name, that.name) && Arrays.equals(specializations, that.specializations);
+    return Objects.equals(name, that.name);
   }
 
   @Override

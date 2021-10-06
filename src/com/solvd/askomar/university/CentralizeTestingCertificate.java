@@ -29,9 +29,7 @@ public class CentralizeTestingCertificate extends Certificate {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        CentralizeTestingCertificate that = (CentralizeTestingCertificate) o;
-        return Objects.equals(subject, that.subject);
+        return super.equals(o);
     }
 
     @Override

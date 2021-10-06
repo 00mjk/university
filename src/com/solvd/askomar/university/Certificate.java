@@ -9,8 +9,6 @@ public abstract class Certificate {
     private Integer mark;
     private LocalDateTime issuedAt;
 
-    public abstract String getCertificateType();
-
     public Certificate(Integer id, Integer mark) {
         this.id = id;
         this.mark = mark;
@@ -21,6 +19,8 @@ public abstract class Certificate {
         this(id, mark);
         this.issuedAt = issuedAt;
     }
+
+    public abstract String getCertificateType();
 
     public Integer getId() {
         return this.id;

@@ -9,8 +9,6 @@ public abstract class EducationalInstitution {
     private Date basedDate;
     private City city;
 
-    public abstract String getEducationalInstitutionType();
-
     public EducationalInstitution(String name) {
         this.name = name;
     }
@@ -20,6 +18,8 @@ public abstract class EducationalInstitution {
         this.basedDate = basedDate;
         this.city = city;
     }
+
+    public abstract String getEducationalInstitutionType();
 
     public String getName() {
         return name;

@@ -1,8 +1,10 @@
 package com.solvd.askomar.university;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Objects;
 
-public class Person {
+public class Person implements Askable {
 
     private String surname;
     private String name;
@@ -17,6 +19,16 @@ public class Person {
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
+    }
+
+    @Override
+    public String sayCurrentTime() {
+        return LocalTime.now().toString();
+    }
+
+    @Override
+    public String sayCurrentDate() {
+        return LocalDate.now().toString();
     }
 
     public String getSurname() {

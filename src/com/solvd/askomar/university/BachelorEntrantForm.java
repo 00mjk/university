@@ -1,5 +1,6 @@
 package com.solvd.askomar.university;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 
 /**
@@ -10,13 +11,15 @@ public class BachelorEntrantForm extends EntrantForm {
     private Certificate[] certificates;
 
     public BachelorEntrantForm(
+            Integer id,
             Entrant entrant,
             SpecializationPlan specializationPlan,
             boolean paid,
             Employee issuedBy,
+            LocalDate acceptedDate,
             Certificate[] certificates
     ) {
-        super(entrant, specializationPlan, paid, issuedBy);
+        super(id, entrant, specializationPlan, paid, issuedBy, acceptedDate);
         this.certificates = certificates;
     }
 

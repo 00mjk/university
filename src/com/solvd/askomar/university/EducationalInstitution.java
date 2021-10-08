@@ -1,9 +1,10 @@
 package com.solvd.askomar.university;
 
 import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
-public abstract class EducationalInstitution {
+public abstract class EducationalInstitution implements Abbreviable {
 
     private String name;
     private Date basedDate;
@@ -17,6 +18,11 @@ public abstract class EducationalInstitution {
         this.name = name;
         this.basedDate = basedDate;
         this.city = city;
+    }
+
+    @Override
+    public String getAbbreviation() {
+        return this.name.substring(0, 4).toUpperCase(Locale.ROOT);
     }
 
     public abstract String getEducationalInstitutionType();

@@ -1,9 +1,10 @@
 package com.solvd.askomar.university;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
-public class Entrant extends Person {
+public class Entrant extends Person implements Entrable {
 
     private static Integer entrantAmount = 0;
 
@@ -19,6 +20,11 @@ public class Entrant extends Person {
     public Entrant(String surname, String name, String patronymic, LocalDate dateOfBirth) {
         super(surname, name, patronymic);
         this.dateOfBirth = dateOfBirth;
+    }
+
+    @Override
+    public boolean isCanEntrateByAge() {
+        return ChronoUnit.YEARS.between(this.dateOfBirth, LocalDate.now()) > 16;
     }
 
     public static Integer getEntrantAmount() {

@@ -3,7 +3,7 @@ package com.solvd.askomar.university;
 import java.util.Date;
 import java.util.Objects;
 
-public abstract class SpecializationPlan {
+public abstract class SpecializationPlan implements Accessible {
 
     private Specialization specialization;
     private int paidPlacesAmount;

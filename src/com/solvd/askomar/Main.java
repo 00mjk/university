@@ -1,6 +1,8 @@
 package com.solvd.askomar;
 
 import com.solvd.askomar.university.*;
+import com.solvd.askomar.university.impl.EnrollmentServiceImpl;
+import com.solvd.askomar.university.impl.InformationCommiteeServiceImpl;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -35,18 +37,20 @@ public class Main {
         departments[0] =
                 new Department(
                         "Automative",
-                        new Specialization[]{specializations[0], specializations[1], specializations[2]});
+                        new Specialization[]{specializations[0], specializations[1], specializations[2]}
+                );
         departments[1] =
                 new Department(
                         "Mechanical Engineering",
-                        new Specialization[]{specializations[3], specializations[4], specializations[5]});
+                        new Specialization[]{specializations[3], specializations[4], specializations[5]}
+                );
 
         University university =
                 new University("Garvard", new Date("03/04/1988"), cities[0], departments);
 
         SpecializationPlan[] specializationPlans = new SpecializationPlan[specializations.length];
         specializationPlans[0] = new FullTimeSpecializationPlan(specializations[0], 10, 200);
-        specializationPlans[1] = new FullTimeSpecializationPlan(specializations[1], 20, 140);
+        specializationPlans[1] = new FullTimeSpecializationPlan(specializations[1], 0, 140);
         specializationPlans[2] = new FullTimeSpecializationPlan(specializations[2], 40, 230);
         specializationPlans[3] = new FullTimeSpecializationPlan(specializations[3], 20, 240);
         specializationPlans[4] =
@@ -66,30 +70,48 @@ public class Main {
         Entrant entrant = new Entrant("Kamarouski", "Andrei", "Sergeevich", LocalDate.of(1998, 4, 27));
 
         EntrantForm bachelorEntrantForm =
-                new BachelorEntrantForm(entrant, specializationPlans[0], true, (Employee)employee, certificates);
+                new BachelorEntrantForm(1234124, entrant, specializationPlans[0], true, (Employee) employee, LocalDate.of(2021, 10, 2), certificates);
 
         EntrantForm masterEntrantForm =
                 new MasterEntrantForm(
+                        1355235,
                         entrant,
                         specializationPlans[2],
                         false,
                         (Employee) employee,
+                        LocalDate.of(2020, 6, 30),
                         specializations[1],
-                        LocalDate.of(2020, 6, 30));
+                        LocalDate.now()
+                );
 
-        EnrollmentService enrollmentService = new EnrollmentService(specializationPlans);
-
+        EnrollmentService enrollmentService = new EnrollmentServiceImpl(specializationPlans);
+        InformationCommiteeService informationCommiteeService = new InformationCommiteeServiceImpl();
         System.out.println("Available specialisations:");
         System.out.println(Arrays.toString(enrollmentService.getAvailableSpecialisations("distance")));
 
         Person dekan = new Employee("Kolesnikov", "Mikhail", new EmployeePosition("Dekan"));
         Person abiturient = new Entrant("Pupkin", "Vasya", LocalDate.of(1999, 5, 26));
 
-        // Polymorphism
         System.out.println("\n##### example of the operation of the control class #####");
-        System.out.println(InformationCommiteeService.getEducationIntstituteInfo(university));
+        System.out.println(informationCommiteeService.getEducationIntstituteInfo(university));
         System.out.println(
-                InformationCommiteeService.getSpecializationPlanInfo(specializationPlans[3]));
-        System.out.println(InformationCommiteeService.getPersonShortName(employee));
+                informationCommiteeService.getSpecializationPlanInfo(specializationPlans[3]));
+        System.out.println(informationCommiteeService.getPersonShortName(employee));
+
+        System.out.println("###### Interface using example ######");
+        Accessible[] accessible = specializationPlans;
+        for (Accessible a : accessible) {
+            System.out.println(String.format("Is free places accessible: ", a.isFreePlacesAccessible()));
+            System.out.println(String.format("Is paid places accessible: ", a.isPaidPlacesAccessible()));
+        }
+
+        boolean validationResult = informationCommiteeService.isValidDocument(bachelorEntrantForm);
+        System.out.println(String.format("Baachelor's entrant form is: %s", validationResult ? "VALID" : "INVALID"));
+
+        System.out.println(informationCommiteeService.askAboutCurrentDateTime(entrant));
+
+        System.out.println(String.format("Can entrable to high education: %b", enrollmentService.canEntrableToHighEducation(entrant)));
+
+        System.out.println("Abbreviation: " + informationCommiteeService.getAbbreviation(university));
     }
 }

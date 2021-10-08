@@ -33,6 +33,16 @@ public class FullTimeSpecializationPlan extends SpecializationPlan {
         this.minMark = minMark;
     }
 
+    @Override
+    public boolean isFreePlacesAccessible() {
+        return freePlacesAmount > 0;
+    }
+
+    @Override
+    public boolean isPaidPlacesAccessible() {
+        return super.getPaidPlacesAmount() > 0;
+    }
+
     public Integer getFreePlacesAmount() {
         return freePlacesAmount;
     }

@@ -9,14 +9,16 @@ public class MasterEntrantForm extends EntrantForm {
     private LocalDate finishedDate;
 
     public MasterEntrantForm(
+            Integer id,
             Entrant entrant,
             SpecializationPlan specializationPlan,
             Boolean paid,
             Employee issuedBy,
+            LocalDate acceptedDate,
             Specialization bachelorsSpec,
             LocalDate finishedDate
     ) {
-        super(entrant, specializationPlan, paid, issuedBy);
+        super(id, entrant, specializationPlan, paid, issuedBy, acceptedDate);
         this.bachelorsSpec = bachelorsSpec;
         this.finishedDate = finishedDate;
     }

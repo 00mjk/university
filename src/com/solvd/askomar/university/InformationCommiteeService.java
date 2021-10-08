@@ -1,16 +1,18 @@
 package com.solvd.askomar.university;
 
-public class InformationCommiteeService {
+public interface InformationCommiteeService {
 
-    public static String getSpecializationPlanInfo(SpecializationPlan specializationPlan) {
-        return specializationPlan.toString();
-    }
+    String getSpecializationPlanInfo(SpecializationPlan specializationPlan);
 
-    public static String getEducationIntstituteInfo(EducationalInstitution educationalInstitution) {
-        return educationalInstitution.toString();
-    }
+    String getEducationIntstituteInfo(EducationalInstitution educationalInstitution);
 
-    public static String getPersonShortName(Person person) {
-        return person.shortNameFormat();
-    }
+    String getPersonShortName(Person person);
+
+    String getSpecialisationAccessibility(Accessible accessible);
+
+    String askAboutCurrentDateTime(Askable askable);
+
+    boolean isValidDocument(Checkable checkable);
+
+    String getAbbreviation(Abbreviable abbreviable);
 }

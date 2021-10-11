@@ -11,6 +11,8 @@ import java.util.Date;
 public class Main {
 
     public static void main(String[] args) {
+        System.setProperty("log4j.configurationFile", "log4j.xml");
+
         City[] cities = new City[3];
         cities[0] = new City("Minsk");
         cities[1] = new City("Pinsk");

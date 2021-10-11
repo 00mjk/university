@@ -5,11 +5,19 @@ import java.util.Objects;
 
 public abstract class Certificate {
 
+    private static final long MIN_ID = 100000000;
+    private static final long MAX_ID = 999999999;
+    private static final int MIN_MARK = 0;
+    private static final int MAX_MARK = 100;
+
     private Integer id;
     private Integer mark;
     private LocalDateTime issuedAt;
 
     public Certificate(Integer id, Integer mark) {
+        if (id < MIN_ID || id > MAX_ID || mark < MIN_MARK || mark > MAX_MARK) {
+            throw new CertificateInvalidDataException("Certificate data should be valid");
+        }
         this.id = id;
         this.mark = mark;
         this.issuedAt = LocalDateTime.now();
@@ -17,6 +25,12 @@ public abstract class Certificate {
 
     public Certificate(Integer id, Integer mark, LocalDateTime issuedAt) {
         this(id, mark);
+        if (Objects.isNull(issuedAt)) {
+            throw new CertificateInvalidDataException("Certificate data should exists");
+        }
+        if (issuedAt.compareTo(LocalDateTime.now()) > 0) {
+            throw new CertificateInvalidDataException("Certificate date and time shouldn't be more than current");
+        }
         this.issuedAt = issuedAt;
     }
 
@@ -27,6 +41,9 @@ public abstract class Certificate {
     }
 
     public void setId(Integer id) {
+        if (id < MIN_ID || id > MAX_ID) {
+            throw new CertificateInvalidDataException("Id in 'Certificate' should not be less than " + MIN_ID + " and more than " + MAX_ID);
+        }
         this.id = id;
     }
 
@@ -35,6 +52,9 @@ public abstract class Certificate {
     }
 
     public void setMark(Integer mark) {
+        if (mark < MIN_MARK || mark > MAX_MARK) {
+            throw new CertificateInvalidDataException("Mark in 'Certificate' should no be less than " + MIN_MARK + " and more than " + MAX_MARK);
+        }
         this.mark = mark;
     }
 
@@ -43,6 +63,12 @@ public abstract class Certificate {
     }
 
     public void setIssuedAt(LocalDateTime issuedAt) {
+        if (Objects.isNull(issuedAt)) {
+            throw new CertificateInvalidDataException("Certificate date and time should exists");
+        }
+        if (issuedAt.compareTo(LocalDateTime.now()) > 0) {
+            throw new CertificateInvalidDataException("Certificate date and time shouldn't be more than current");
+        }
         this.issuedAt = issuedAt;
     }
 

@@ -6,18 +6,25 @@ import java.util.Objects;
 
 public class Person implements Askable {
 
+    private static final int MIN_STRING_LENGTH = 4;
+
     private String surname;
     private String name;
     private String patronymic;
 
-    public Person(String surname, String name) {
+    public Person(String surname, String name) throws PersonInvalidDataException {
+        if (surname.length() < MIN_STRING_LENGTH || name.length() < MIN_STRING_LENGTH) {
+            throw new PersonInvalidDataException("Surname and name should have length equivalent or more than " + MIN_STRING_LENGTH + " symbols");
+        }
         this.surname = surname;
         this.name = name;
     }
 
-    public Person(String surname, String name, String patronymic) {
-        this.surname = surname;
-        this.name = name;
+    public Person(String surname, String name, String patronymic) throws PersonInvalidDataException {
+        this(surname, name);
+        if (patronymic.length() < MIN_STRING_LENGTH) {
+            throw new PersonInvalidDataException("Patronymic should have length equivalent or more than " + MIN_STRING_LENGTH + " symbols");
+        }
         this.patronymic = patronymic;
     }
 
@@ -35,7 +42,10 @@ public class Person implements Askable {
         return surname;
     }
 
-    public void setSurname(String surname) {
+    public void setSurname(String surname) throws PersonInvalidDataException {
+        if (surname.length() < MIN_STRING_LENGTH) {
+            throw new PersonInvalidDataException("Surname length should be equivalent or more than " + MIN_STRING_LENGTH + " symbols");
+        }
         this.surname = surname;
     }
 
@@ -43,7 +53,10 @@ public class Person implements Askable {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws PersonInvalidDataException {
+        if (name.length() < MIN_STRING_LENGTH) {
+            throw new PersonInvalidDataException("Name should have length equivalent or more than " + MIN_STRING_LENGTH + " symbols");
+        }
         this.name = name;
     }
 
@@ -51,7 +64,10 @@ public class Person implements Askable {
         return patronymic;
     }
 
-    public void setPatronymic(String patronymic) {
+    public void setPatronymic(String patronymic) throws PersonInvalidDataException {
+        if (patronymic.length() < MIN_STRING_LENGTH) {
+            throw new PersonInvalidDataException("Patronumic should have lenght equivalent or more than " + MIN_STRING_LENGTH + " symbols");
+        }
         this.patronymic = patronymic;
     }
 

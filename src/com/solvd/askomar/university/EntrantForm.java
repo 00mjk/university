@@ -20,6 +20,14 @@ public abstract class EntrantForm implements Checkable {
     public EntrantForm(
             Integer id, Entrant entrant, SpecializationPlan specializationPlan, boolean paid, Employee issuedBy, LocalDate acceptedDate
     ) {
+        if (!this.isValidIdentificator() || Objects.isNull(entrant) ||
+                Objects.isNull(specializationPlan) ||
+                Objects.isNull(issuedBy) ||
+                Objects.isNull(acceptedDate) ||
+                acceptedDate.compareTo(LocalDate.now()) < 0
+        ) {
+            throw new EntrantFormInvalidDataException("Entrant form should have valid data");
+        }
         this.id = id;
         this.entrant = entrant;
         this.specializationPlan = specializationPlan;
@@ -45,6 +53,9 @@ public abstract class EntrantForm implements Checkable {
     }
 
     public void setId(Integer id) {
+        if (!this.isValidIdentificator()) {
+            throw new EntrantFormInvalidDataException("Entrant form id should be more than 0");
+        }
         this.id = id;
     }
 
@@ -53,6 +64,9 @@ public abstract class EntrantForm implements Checkable {
     }
 
     public void setEntrant(Entrant entrant) {
+        if (Objects.isNull(entrant)) {
+            throw new EntrantFormInvalidDataException("Entrant in 'Entrant form' should exists");
+        }
         this.entrant = entrant;
     }
 
@@ -61,6 +75,9 @@ public abstract class EntrantForm implements Checkable {
     }
 
     public void setSpecializationPlan(SpecializationPlan specializationPlan) {
+        if (Objects.isNull(specializationPlan)) {
+            throw new EntrantFormInvalidDataException("Specialisation plan in 'Entrant form' should exists");
+        }
         this.specializationPlan = specializationPlan;
     }
 
@@ -77,6 +94,9 @@ public abstract class EntrantForm implements Checkable {
     }
 
     public void setIssuedBy(Employee issuedBy) {
+        if (Objects.isNull(issuedBy)) {
+            throw new EntrantFormInvalidDataException("Employee in 'Entrant form' should exists");
+        }
         this.issuedBy = issuedBy;
     }
 
@@ -85,6 +105,9 @@ public abstract class EntrantForm implements Checkable {
     }
 
     public void setAcceptedDate(LocalDate acceptedDate) {
+        if (Objects.isNull(acceptedDate)) {
+            throw new EntrantFormInvalidDataException("Date in 'Entrant form' should exists");
+        }
         this.acceptedDate = acceptedDate;
     }
 

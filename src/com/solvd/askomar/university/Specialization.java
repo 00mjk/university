@@ -2,9 +2,14 @@ package com.solvd.askomar.university;
 
 public class Specialization {
 
+    private static final int MIN_STRING_LENGTH = 5;
+
     private String name;
 
-    public Specialization(String name) {
+    public Specialization(String name) throws SpecialisationInvalidDataException {
+        if (name.length() < MIN_STRING_LENGTH) {
+            throw new SpecialisationInvalidDataException("Specialisation name should have length equivalent or more than " + MIN_STRING_LENGTH + " symbols");
+        }
         this.name = name;
     }
 
@@ -12,7 +17,10 @@ public class Specialization {
         return this.name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws SpecialisationInvalidDataException {
+        if (name.length() < MIN_STRING_LENGTH) {
+            throw new SpecialisationInvalidDataException("Specialisation name should have length equivalent or more than " + MIN_STRING_LENGTH + " symbols");
+        }
         this.name = name;
     }
 

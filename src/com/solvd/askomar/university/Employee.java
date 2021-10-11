@@ -6,12 +6,12 @@ public class Employee extends Person {
 
     private EmployeePosition position;
 
-    public Employee(String surname, String name, EmployeePosition position) {
+    public Employee(String surname, String name, EmployeePosition position) throws PersonInvalidDataException {
         super(surname, name);
         this.position = position;
     }
 
-    public Employee(String surname, String name, String patronymic, EmployeePosition position) {
+    public Employee(String surname, String name, String patronymic, EmployeePosition position) throws PersonInvalidDataException {
         super(surname, name, patronymic);
         this.position = position;
     }

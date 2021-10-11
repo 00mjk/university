@@ -3,6 +3,8 @@ package com.solvd.askomar;
 import com.solvd.askomar.university.*;
 import com.solvd.askomar.university.impl.EnrollmentServiceImpl;
 import com.solvd.askomar.university.impl.InformationCommiteeServiceImpl;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -11,7 +13,9 @@ import java.util.Date;
 public class Main {
 
     public static void main(String[] args) {
-        System.setProperty("log4j.configurationFile", "log4j.xml");
+        System.setProperty("log4j.configurationFile", "log4j2.xml");
+
+        Logger logger = LogManager.getLogger(Main.class);
 
         City[] cities = new City[3];
         cities[0] = new City("Minsk");
@@ -28,14 +32,19 @@ public class Main {
         Department[] departments = new Department[2];
 
         Specialization[] specializations = new Specialization[6];
-        specializations[0] =
-                new Specialization("Automation of technological processes and productions");
-        specializations[1] = new Specialization("Intelligent devices, machines and production");
-        specializations[2] = new Specialization("Computer mechatronics");
-        specializations[3] = new Specialization("Design and operation of nuclear power plants");
-        specializations[4] = new Specialization("Industrial thermal power engineering");
-        specializations[5] = new Specialization("Relay protection sand automation");
-
+        try {
+            specializations[0] =
+                    new Specialization("Automation of technological processes and productions");
+            specializations[1] = new Specialization("Intelligent devices, machines and production");
+            specializations[2] = new Specialization("Computer mechatronics");
+            specializations[3] = new Specialization("Design and operation of nuclear power plants");
+            specializations[4] = new Specialization("Industrial thermal power engineering");
+            specializations[5] = new Specialization("Relay protection sand automation");
+        } catch (SpecialisationInvalidDataException e) {
+            logger.error("Exception when try to initialise specialisation array", e);
+        } finally {
+            logger.debug("Finish specialisation's array initialisation");
+        }
         departments[0] =
                 new Department(
                         "Automative",
@@ -66,11 +75,17 @@ public class Main {
         certificates[3] = new HighSchoolCertificate(5902, 7);
 
         EmployeePosition employeePosition = new EmployeePosition("Manager");
-
-        Person employee = new Employee("Kamarouski", "Andrei", "Sergeevich", employeePosition);
-
-        Entrant entrant = new Entrant("Kamarouski", "Andrei", "Sergeevich", LocalDate.of(1998, 4, 27));
-
+        // TODO Resolve
+        Person employee = null;
+        Entrant entrant = null;
+        try {
+            employee = new Employee("Kamarouski", "Andrei", "Sergeevich", employeePosition);
+            entrant = new Entrant("Kamarouski", "Andrei", "Sergeevich", LocalDate.of(1998, 4, 27));
+        } catch (PersonInvalidDataException e) {
+            logger.error("Entrant initialisation failed", e);
+        } finally {
+            logger.debug("Finish entrant initialisation");
+        }
         EntrantForm bachelorEntrantForm =
                 new BachelorEntrantForm(1234124, entrant, specializationPlans[0], true, (Employee) employee, LocalDate.of(2021, 10, 2), certificates);
 
@@ -91,8 +106,14 @@ public class Main {
         System.out.println("Available specialisations:");
         System.out.println(Arrays.toString(enrollmentService.getAvailableSpecialisations("distance")));
 
-        Person dekan = new Employee("Kolesnikov", "Mikhail", new EmployeePosition("Dekan"));
-        Person abiturient = new Entrant("Pupkin", "Vasya", LocalDate.of(1999, 5, 26));
+        try {
+            Person dekan = new Employee("Kolesnikov", "Mikhail", new EmployeePosition("Dekan"));
+            Person abiturient = new Entrant("Pupkin", "Vasya", LocalDate.of(1999, 5, 26));
+        } catch (PersonInvalidDataException e) {
+            logger.error("Person data is not valid", e);
+        } finally {
+            logger.debug("Finish entrant initialisation");
+        }
 
         System.out.println("\n##### example of the operation of the control class #####");
         System.out.println(informationCommiteeService.getEducationIntstituteInfo(university));

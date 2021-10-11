@@ -11,13 +11,13 @@ public class Entrant extends Person implements Entrable {
     private Integer id;
     private LocalDate dateOfBirth;
 
-    public Entrant(String surname, String name, LocalDate dateOfBirth) {
+    public Entrant(String surname, String name, LocalDate dateOfBirth) throws PersonInvalidDataException {
         super(surname, name);
         this.id = ++entrantAmount;
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Entrant(String surname, String name, String patronymic, LocalDate dateOfBirth) {
+    public Entrant(String surname, String name, String patronymic, LocalDate dateOfBirth) throws PersonInvalidDataException {
         super(surname, name, patronymic);
         this.dateOfBirth = dateOfBirth;
     }

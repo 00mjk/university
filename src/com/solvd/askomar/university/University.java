@@ -1,9 +1,18 @@
 package com.solvd.askomar.university;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Arrays;
 import java.util.Date;
 
 public class University extends EducationalInstitution {
+
+    private static Logger logger;
+
+    {
+        logger = LogManager.getLogger(getClass().getName());
+    }
 
     private Department[] departments;
 
@@ -15,6 +24,7 @@ public class University extends EducationalInstitution {
     public University(String name, Date basedDate, City city, Department[] departments) {
         super(name, basedDate, city);
         this.departments = departments;
+        logger.debug("University was created");
     }
 
     public Department[] getDepartments() {

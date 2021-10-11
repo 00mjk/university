@@ -20,11 +20,11 @@ public abstract class EntrantForm implements Checkable {
     public EntrantForm(
             Integer id, Entrant entrant, SpecializationPlan specializationPlan, boolean paid, Employee issuedBy, LocalDate acceptedDate
     ) {
-        if (!this.isValidIdentificator() || Objects.isNull(entrant) ||
+        if (id < 0 || Objects.isNull(entrant) ||
                 Objects.isNull(specializationPlan) ||
                 Objects.isNull(issuedBy) ||
                 Objects.isNull(acceptedDate) ||
-                acceptedDate.compareTo(LocalDate.now()) < 0
+                acceptedDate.compareTo(LocalDate.now()) > 0
         ) {
             throw new EntrantFormInvalidDataException("Entrant form should have valid data");
         }
@@ -53,7 +53,7 @@ public abstract class EntrantForm implements Checkable {
     }
 
     public void setId(Integer id) {
-        if (!this.isValidIdentificator()) {
+        if (id < 0) {
             throw new EntrantFormInvalidDataException("Entrant form id should be more than 0");
         }
         this.id = id;

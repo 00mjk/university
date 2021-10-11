@@ -69,10 +69,10 @@ public class Main {
         specializationPlans[5] = new DistanceSpecializationPlan(specializations[5], 50, 433.99);
 
         Certificate[] certificates = new Certificate[4];
-        certificates[0] = new CentralizeTestingCertificate(2307342, subjects[0], 70);
-        certificates[1] = new CentralizeTestingCertificate(35225, subjects[1], 40);
-        certificates[2] = new CentralizeTestingCertificate(8492, subjects[4], 55);
-        certificates[3] = new HighSchoolCertificate(5902, 7);
+        certificates[0] = new CentralizeTestingCertificate(100000000, subjects[0], 70);
+        certificates[1] = new CentralizeTestingCertificate(153663000, subjects[1], 40);
+        certificates[2] = new CentralizeTestingCertificate(646577800, subjects[4], 55);
+        certificates[3] = new HighSchoolCertificate(816247800, 7);
 
         EmployeePosition employeePosition = new EmployeePosition("Manager");
         // TODO Resolve
@@ -87,7 +87,7 @@ public class Main {
             logger.debug("Finish entrant initialisation");
         }
         EntrantForm bachelorEntrantForm =
-                new BachelorEntrantForm(1234124, entrant, specializationPlans[0], true, (Employee) employee, LocalDate.of(2021, 10, 2), certificates);
+                new BachelorEntrantForm(65, entrant, specializationPlans[0], true, (Employee) employee, LocalDate.of(2021, 8, 2), certificates);
 
         EntrantForm masterEntrantForm =
                 new MasterEntrantForm(
@@ -103,8 +103,8 @@ public class Main {
 
         EnrollmentService enrollmentService = new EnrollmentServiceImpl(specializationPlans);
         InformationCommiteeService informationCommiteeService = new InformationCommiteeServiceImpl();
-        System.out.println("Available specialisations:");
-        System.out.println(Arrays.toString(enrollmentService.getAvailableSpecialisations("distance")));
+        logger.info("Available specialisations:");
+        logger.info(Arrays.toString(enrollmentService.getAvailableSpecialisations("distance")));
 
         try {
             Person dekan = new Employee("Kolesnikov", "Mikhail", new EmployeePosition("Dekan"));
@@ -115,26 +115,26 @@ public class Main {
             logger.debug("Finish entrant initialisation");
         }
 
-        System.out.println("\n##### example of the operation of the control class #####");
-        System.out.println(informationCommiteeService.getEducationIntstituteInfo(university));
-        System.out.println(
+        logger.info("\n##### example of the operation of the control class #####");
+        logger.info(informationCommiteeService.getEducationIntstituteInfo(university));
+        logger.info(
                 informationCommiteeService.getSpecializationPlanInfo(specializationPlans[3]));
-        System.out.println(informationCommiteeService.getPersonShortName(employee));
+        logger.info(informationCommiteeService.getPersonShortName(employee));
 
-        System.out.println("###### Interface using example ######");
+        logger.info("###### Interface using example ######");
         Accessible[] accessible = specializationPlans;
         for (Accessible a : accessible) {
-            System.out.println(String.format("Is free places accessible: ", a.isFreePlacesAccessible()));
-            System.out.println(String.format("Is paid places accessible: ", a.isPaidPlacesAccessible()));
+            logger.info(String.format("Is free places accessible: ", a.isFreePlacesAccessible()));
+            logger.info(String.format("Is paid places accessible: ", a.isPaidPlacesAccessible()));
         }
 
         boolean validationResult = informationCommiteeService.isValidDocument(bachelorEntrantForm);
-        System.out.println(String.format("Baachelor's entrant form is: %s", validationResult ? "VALID" : "INVALID"));
+        logger.info(String.format("Baachelor's entrant form is: %s", validationResult ? "VALID" : "INVALID"));
 
-        System.out.println(informationCommiteeService.askAboutCurrentDateTime(entrant));
+        logger.info(informationCommiteeService.askAboutCurrentDateTime(entrant));
 
-        System.out.println(String.format("Can entrable to high education: %b", enrollmentService.canEntrableToHighEducation(entrant)));
+        logger.info(String.format("Can entrable to high education: %b", enrollmentService.canEntrableToHighEducation(entrant)));
 
-        System.out.println("Abbreviation: " + informationCommiteeService.getAbbreviation(university));
+        logger.info("Abbreviation: " + informationCommiteeService.getAbbreviation(university));
     }
 }

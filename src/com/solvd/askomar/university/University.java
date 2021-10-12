@@ -8,11 +8,7 @@ import java.util.Date;
 
 public class University extends EducationalInstitution {
 
-    private static Logger logger;
-
-    {
-        logger = LogManager.getLogger(getClass().getName());
-    }
+    private static final Logger logger = LogManager.getLogger(University.class);
 
     private Department[] departments;
 

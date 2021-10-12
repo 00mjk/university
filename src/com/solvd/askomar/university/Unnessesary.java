@@ -8,11 +8,7 @@ import java.io.IOException;
 
 public class Unnessesary implements Closeable {
 
-    private static Logger logger;
-
-    {
-        logger = LogManager.getLogger(getClass().getName());
-    }
+    private static final Logger logger = LogManager.getLogger(Unnessesary.class);
 
     @Override
     public void close() throws IOException {

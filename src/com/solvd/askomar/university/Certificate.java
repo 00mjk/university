@@ -89,6 +89,6 @@ public abstract class Certificate {
 
     @Override
     public String toString() {
-        return String.format("Certificate:\n\tidentificator - %d\n\tmark - %d\n\tIssued at - %s");
+        return String.format("Certificate:\n\tidentificator - %d\n\tmark - %d\n\tIssued at - %s", this.id, this.mark, this.issuedAt);
     }
 }

@@ -76,7 +76,7 @@ public class Main {
 
         EmployeePosition employeePosition = new EmployeePosition("Manager");
         // TODO Resolve
-        Person employee = null;
+        Employee employee = null;
         Entrant entrant = null;
         try {
             employee = new Employee("Kamarouski", "Andrei", "Sergeevich", employeePosition);
@@ -87,7 +87,7 @@ public class Main {
             logger.debug("Finish entrant initialisation");
         }
         EntrantForm bachelorEntrantForm =
-                new BachelorEntrantForm(65, entrant, specializationPlans[0], true, (Employee) employee, LocalDate.of(2021, 8, 2), certificates);
+                new BachelorEntrantForm(65, entrant, specializationPlans[0], true, employee, LocalDate.of(2021, 8, 2), certificates);
 
         EntrantForm masterEntrantForm =
                 new MasterEntrantForm(
@@ -95,7 +95,7 @@ public class Main {
                         entrant,
                         specializationPlans[2],
                         false,
-                        (Employee) employee,
+                        employee,
                         LocalDate.of(2020, 6, 30),
                         specializations[1],
                         LocalDate.now()
@@ -122,10 +122,9 @@ public class Main {
         logger.info(informationCommiteeService.getPersonShortName(employee));
 
         logger.info("###### Interface using example ######");
-        Accessible[] accessible = specializationPlans;
-        for (Accessible a : accessible) {
-            logger.info(String.format("Is free places accessible: ", a.isFreePlacesAccessible()));
-            logger.info(String.format("Is paid places accessible: ", a.isPaidPlacesAccessible()));
+        for (Accessible a : specializationPlans) {
+            logger.info(String.format("Is free places accessible: %b", a.isFreePlacesAccessible()));
+            logger.info(String.format("Is paid places accessible: %b", a.isPaidPlacesAccessible()));
         }
 
         boolean validationResult = informationCommiteeService.isValidDocument(bachelorEntrantForm);

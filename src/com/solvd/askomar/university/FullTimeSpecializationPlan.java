@@ -64,7 +64,8 @@ public class FullTimeSpecializationPlan extends SpecializationPlan {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        FullTimeSpecializationPlan that = (FullTimeSpecializationPlan) o;
+        FullTimeSpecializationPlan that;
+        that = (FullTimeSpecializationPlan) o;
         return Objects.equals(freePlacesAmount, that.freePlacesAmount)
                 && Objects.equals(minMark, that.minMark);
     }

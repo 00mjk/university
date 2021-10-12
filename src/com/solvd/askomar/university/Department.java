@@ -33,7 +33,8 @@ public class Department {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Department that = (Department) o;
+        Department that;
+        that = (Department) o;
         return Objects.equals(name, that.name);
     }
 
@@ -46,10 +47,8 @@ public class Department {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Department{");
-        sb.append("name='").append(name).append('\'');
-        sb.append(", specializations=").append(Arrays.toString(specializations));
-        sb.append('}');
-        return sb.toString();
+        return "Department{" + "name='" + name + '\'' +
+                ", specializations=" + Arrays.toString(specializations) +
+                '}';
     }
 }

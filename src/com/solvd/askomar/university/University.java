@@ -57,21 +57,21 @@ public class University extends EducationalInstitution {
     }
 
     public String getDepartamentsByString() {
-        String resultString = "";
-        for (int i = 0; i < departments.length; i++) {
-            resultString += departments[i].getName() + " ";
+        StringBuilder resultString = new StringBuilder();
+        for (Department department : departments) {
+            resultString.append(department.getName()).append(" ");
         }
-        return resultString;
+        return resultString.toString();
     }
 
     public String getFullUnivercityInfo() {
-        String info = "University: " + this.getName() + "\n";
-        for (int i = 0; i < this.departments.length; i++) {
-            info += "Department: " + this.departments[i].getName() + "\n";
-            for (int j = 0; j < this.departments[i].getSpecializations().length; j++) {
-                info += this.departments[i].getSpecializations()[j].getName() + "\n";
+        StringBuilder info = new StringBuilder("University: " + this.getName() + "\n");
+        for (Department department : this.departments) {
+            info.append("Department: ").append(department.getName()).append("\n");
+            for (int j = 0; j < department.getSpecializations().length; j++) {
+                info.append(department.getSpecializations()[j].getName()).append("\n");
             }
         }
-        return info;
+        return info.toString();
     }
 }

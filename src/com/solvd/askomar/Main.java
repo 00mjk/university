@@ -136,5 +136,12 @@ public class Main {
         logger.info(String.format("Can entrable to high education: %b", enrollmentService.canEntrableToHighEducation(entrant)));
 
         logger.info("Abbreviation: " + informationCommiteeService.getAbbreviation(university));
+
+        logger.info("Example with try with resourcces");
+        try (Unnessesary unnessesary = new Unnessesary()) {
+            logger.debug("Do something in try with resources");
+        } catch (Exception ignored) {
+
+        }
     }
 }

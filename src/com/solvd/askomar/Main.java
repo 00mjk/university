@@ -140,8 +140,6 @@ public class Main {
         logger.info("Example with try with resourcces");
         try (Unnessesary unnessesary = new Unnessesary()) {
             logger.debug("Do something in try with resources");
-        } catch (Exception ignored) {
-
         }
     }
 }

@@ -2,28 +2,31 @@ package com.solvd.askomar.university.impl;
 
 import com.solvd.askomar.university.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EnrollmentServiceImpl implements EnrollmentService {
 
-    private SpecializationPlan[] specializationPlans;
-    private EntrantForm[] entrantForms;
+    private List<SpecializationPlan> specializationPlans;
+    private List<EntrantForm> entrantForms;
 
-    public EnrollmentServiceImpl(SpecializationPlan[] specializationPlans) {
+    public EnrollmentServiceImpl(List<SpecializationPlan> specializationPlans) {
         this.specializationPlans = specializationPlans;
     }
 
-    public SpecializationPlan[] getSpecializationPlans() {
+    public List<SpecializationPlan> getSpecializationPlans() {
         return specializationPlans;
     }
 
-    public void setSpecializationPlans(SpecializationPlan[] specializationPlans) {
+    public void setSpecializationPlans(List<SpecializationPlan> specializationPlans) {
         this.specializationPlans = specializationPlans;
     }
 
-    public EntrantForm[] getEntrantForms() {
+    public List<EntrantForm> getEntrantForms() {
         return entrantForms;
     }
 
-    public void setEntrantForms(EntrantForm[] entrantForms) {
+    public void setEntrantForms(List<EntrantForm> entrantForms) {
         this.entrantForms = entrantForms;
     }
 
@@ -31,9 +34,8 @@ public class EnrollmentServiceImpl implements EnrollmentService {
      * @param specType Possible inputs: 'full', 'distance'
      */
     @Override
-    public SpecializationPlan[] getAvailableSpecialisations(String specType) {
-        SpecializationPlan[] availablePlans = new SpecializationPlan[specializationPlans.length];
-        int plansIndex = 0;
+    public List<SpecializationPlan> getAvailableSpecialisations(String specType) {
+        List<SpecializationPlan> availablePlans = new ArrayList<>();
         String specTypeClass;
         switch (specType) {
             case "full":
@@ -47,23 +49,22 @@ public class EnrollmentServiceImpl implements EnrollmentService {
         }
         for (SpecializationPlan sp : specializationPlans) {
             if (sp.getClass().getSimpleName().equals(specTypeClass)) {
-                availablePlans[plansIndex] = sp;
-                plansIndex++;
+                availablePlans.add(sp);
             }
         }
         return availablePlans;
     }
 
     @Override
-    public SpecializationPlan[] getAvailableSpecialisations(Integer mark) {
-        SpecializationPlan[] availableSpecByType =
+    public List<SpecializationPlan> getAvailableSpecialisations(Integer mark) {
+        List<SpecializationPlan> availableSpecByType =
                 this.getAvailableSpecialisations("FullTimeSpecializationPlan");
-        FullTimeSpecializationPlan[] availableSpecByMark =
-                new FullTimeSpecializationPlan[availableSpecByType.length];
+        List<SpecializationPlan> availableSpecByMark =
+                new ArrayList<>();
         int spIndex = 0;
         for (SpecializationPlan sp : availableSpecByType) {
             if (((FullTimeSpecializationPlan) sp).getMinMark().equals(mark)) {
-                availableSpecByMark[spIndex] = (FullTimeSpecializationPlan) sp;
+                availableSpecByMark.add(sp);
                 spIndex++;
             }
         }

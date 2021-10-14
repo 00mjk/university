@@ -1,14 +1,14 @@
 package com.solvd.askomar.university;
 
 import java.time.LocalDate;
-import java.util.Arrays;
+import java.util.List;
 
 /**
  * Application for higher education of the 1st stage (Bachelor's degree)
  */
 public class BachelorEntrantForm extends EntrantForm {
 
-    private Certificate[] certificates;
+    private List<Certificate> certificates;
 
     public BachelorEntrantForm(
             Integer id,
@@ -17,17 +17,17 @@ public class BachelorEntrantForm extends EntrantForm {
             boolean paid,
             Employee issuedBy,
             LocalDate acceptedDate,
-            Certificate[] certificates
+            List<Certificate> certificates
     ) {
         super(id, entrant, specializationPlan, paid, issuedBy, acceptedDate);
         this.certificates = certificates;
     }
 
-    public Certificate[] getCertificates() {
+    public List<Certificate> getCertificates() {
         return certificates;
     }
 
-    public void setCertificates(Certificate[] certificates) {
+    public void setCertificates(List<Certificate> certificates) {
         this.certificates = certificates;
     }
 
@@ -37,13 +37,13 @@ public class BachelorEntrantForm extends EntrantForm {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         BachelorEntrantForm that = (BachelorEntrantForm) o;
-        return Arrays.equals(certificates, that.certificates);
+        return certificates.equals(that.certificates);
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + Arrays.hashCode(certificates);
+        result = 31 * result + certificates.hashCode();
         return result;
     }
 
@@ -51,7 +51,7 @@ public class BachelorEntrantForm extends EntrantForm {
     public String toString() {
         return String.format(
                 "%s\n\ttype - bachelor entrant form\n\tCertificates: %s",
-                super.toString(), Arrays.toString(this.certificates));
+                super.toString(), this.certificates.toString());
     }
 
     public Integer getTotalMark() {

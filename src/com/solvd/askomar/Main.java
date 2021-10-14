@@ -7,8 +7,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDate;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Main {
 
@@ -17,65 +18,71 @@ public class Main {
 
         Logger logger = LogManager.getLogger(Main.class);
 
-        City[] cities = new City[3];
-        cities[0] = new City("Minsk");
-        cities[1] = new City("Pinsk");
-        cities[2] = new City("Brest");
+        List<City> cities = new ArrayList<>();
+        cities.add(new City("Minsk"));
+        cities.add(new City("Pinsk"));
+        cities.add(new City("Brest"));
 
-        Subject[] subjects = new Subject[5];
-        subjects[0] = new Subject("Mathematics");
-        subjects[1] = new Subject("Russian Language");
-        subjects[2] = new Subject("Belarussian Language");
-        subjects[3] = new Subject("History");
-        subjects[4] = new Subject("Informatics");
+        List<Subject> subjects = new ArrayList<>();
+        subjects.add(new Subject("Mathematics"));
+        subjects.add(new Subject("Russian Language"));
+        subjects.add(new Subject("Belarussian Language"));
+        subjects.add(new Subject("History"));
+        subjects.add(new Subject("Informatics"));
 
-        Department[] departments = new Department[2];
+        List<Department> departments = new ArrayList<>();
 
-        Specialization[] specializations = new Specialization[6];
+        List<Specialization> specializations = new ArrayList<>();
         try {
-            specializations[0] =
-                    new Specialization("Automation of technological processes and productions");
-            specializations[1] = new Specialization("Intelligent devices, machines and production");
-            specializations[2] = new Specialization("Computer mechatronics");
-            specializations[3] = new Specialization("Design and operation of nuclear power plants");
-            specializations[4] = new Specialization("Industrial thermal power engineering");
-            specializations[5] = new Specialization("Relay protection sand automation");
+            specializations.add(new Specialization("Automation of technological processes and productions"));
+            specializations.add(new Specialization("Intelligent devices, machines and production"));
+            specializations.add(new Specialization("Computer mechatronics"));
+            specializations.add(new Specialization("Design and operation of nuclear power plants"));
+            specializations.add(new Specialization("Industrial thermal power engineering"));
+            specializations.add(new Specialization("Relay protection sand automation"));
         } catch (SpecialisationInvalidDataException e) {
             logger.error("Exception when try to initialise specialisation array", e);
         } finally {
             logger.debug("Finish specialisation's array initialisation");
         }
-        departments[0] =
-                new Department(
-                        "Automative",
-                        new Specialization[]{specializations[0], specializations[1], specializations[2]}
-                );
-        departments[1] =
+
+        List<Specialization> automativeSpecialisations = new ArrayList<>();
+        automativeSpecialisations.add(specializations.get(0));
+        automativeSpecialisations.add(specializations.get(1));
+        automativeSpecialisations.add(specializations.get(2));
+
+        List<Specialization> mechEngineerSpec = new ArrayList<>();
+        mechEngineerSpec.add(specializations.get(3));
+        mechEngineerSpec.add(specializations.get(4));
+        mechEngineerSpec.add(specializations.get(5));
+
+        departments.add(new Department("Automative", automativeSpecialisations));
+        departments.add(
                 new Department(
                         "Mechanical Engineering",
-                        new Specialization[]{specializations[3], specializations[4], specializations[5]}
-                );
+                        mechEngineerSpec
+                )
+        );
 
         University university =
-                new University("Garvard", new Date("03/04/1988"), cities[0], departments);
+                new University("Garvard", new Date("03/04/1988"), cities.get(0), departments);
 
-        SpecializationPlan[] specializationPlans = new SpecializationPlan[specializations.length];
-        specializationPlans[0] = new FullTimeSpecializationPlan(specializations[0], 10, 200);
-        specializationPlans[1] = new FullTimeSpecializationPlan(specializations[1], 0, 140);
-        specializationPlans[2] = new FullTimeSpecializationPlan(specializations[2], 40, 230);
-        specializationPlans[3] = new FullTimeSpecializationPlan(specializations[3], 20, 240);
-        specializationPlans[4] =
-                new FullTimeSpecializationPlan(specializations[4], 15, 3000.21, 54, 300);
-        specializationPlans[5] = new DistanceSpecializationPlan(specializations[5], 50, 433.99);
+        List<SpecializationPlan> specializationPlans = new ArrayList<>();
+        specializationPlans.add(new FullTimeSpecializationPlan(specializations.get(0), 10, 200));
+        specializationPlans.add(new FullTimeSpecializationPlan(specializations.get(1), 0, 140));
+        specializationPlans.add(new FullTimeSpecializationPlan(specializations.get(1), 40, 230));
+        specializationPlans.add(new FullTimeSpecializationPlan(specializations.get(2), 20, 240));
+        specializationPlans.add(new FullTimeSpecializationPlan(specializations.get(3), 15, 3000.21, 54, 300));
+        specializationPlans.add(new DistanceSpecializationPlan(specializations.get(5), 50, 433.99));
 
-        Certificate[] certificates = new Certificate[4];
-        certificates[0] = new CentralizeTestingCertificate(100000000, subjects[0], 70);
-        certificates[1] = new CentralizeTestingCertificate(153663000, subjects[1], 40);
-        certificates[2] = new CentralizeTestingCertificate(646577800, subjects[4], 55);
-        certificates[3] = new HighSchoolCertificate(816247800, 7);
+        List<Certificate> certificates = new ArrayList<>();
+        certificates.add(new CentralizeTestingCertificate(100000000, subjects.get(0), 70));
+        certificates.add(new CentralizeTestingCertificate(153663000, subjects.get(1), 40));
+        certificates.add(new CentralizeTestingCertificate(646577800, subjects.get(4), 55));
+        certificates.add(new HighSchoolCertificate(816247800, 7));
 
         EmployeePosition employeePosition = new EmployeePosition("Manager");
-        // TODO Resolve
+
         Employee employee = null;
         Entrant entrant = null;
         try {
@@ -87,24 +94,24 @@ public class Main {
             logger.debug("Finish entrant initialisation");
         }
         EntrantForm bachelorEntrantForm =
-                new BachelorEntrantForm(65, entrant, specializationPlans[0], true, employee, LocalDate.of(2021, 8, 2), certificates);
+                new BachelorEntrantForm(65, entrant, specializationPlans.get(0), true, employee, LocalDate.of(2021, 8, 2), certificates);
 
         EntrantForm masterEntrantForm =
                 new MasterEntrantForm(
                         1355235,
                         entrant,
-                        specializationPlans[2],
+                        specializationPlans.get(2),
                         false,
                         employee,
                         LocalDate.of(2020, 6, 30),
-                        specializations[1],
+                        specializations.get(1),
                         LocalDate.now()
                 );
 
         EnrollmentService enrollmentService = new EnrollmentServiceImpl(specializationPlans);
         InformationCommiteeService informationCommiteeService = new InformationCommiteeServiceImpl();
         logger.info("Available specialisations:");
-        logger.info(Arrays.toString(enrollmentService.getAvailableSpecialisations("distance")));
+        logger.info(enrollmentService.getAvailableSpecialisations("distance").toString());
 
         try {
             Person dekan = new Employee("Kolesnikov", "Mikhail", new EmployeePosition("Dekan"));
@@ -118,7 +125,7 @@ public class Main {
         logger.info("\n##### example of the operation of the control class #####");
         logger.info(informationCommiteeService.getEducationIntstituteInfo(university));
         logger.info(
-                informationCommiteeService.getSpecializationPlanInfo(specializationPlans[3]));
+                informationCommiteeService.getSpecializationPlanInfo(specializationPlans.get(3)));
         logger.info(informationCommiteeService.getPersonShortName(employee));
 
         logger.info("###### Interface using example ######");

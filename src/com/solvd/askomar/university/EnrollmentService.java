@@ -1,10 +1,12 @@
 package com.solvd.askomar.university;
 
+import java.util.List;
+
 public interface EnrollmentService {
 
-    SpecializationPlan[] getAvailableSpecialisations(String specType);
+    List<SpecializationPlan> getAvailableSpecialisations(String specType);
 
-    SpecializationPlan[] getAvailableSpecialisations(Integer mark);
+    List<SpecializationPlan> getAvailableSpecialisations(Integer mark);
 
     boolean canEntrableToHighEducation(Entrable entrable);
 }

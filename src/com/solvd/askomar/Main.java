@@ -155,10 +155,12 @@ public class Main {
         employeeAnswers.put(new Employee("Vasya", "Pupkin", employeePosition), "We can upgrade our computers");
         employeeAnswers.put(new Employee("Inna", "Ivanovna", employeePosition), "We can improve our skills");
         Survey<Employee> employeesSurvey = new Survey<>("What can be improved", "All)", employeeAnswers);
+        logger.debug(employeesSurvey.getResults());
 
         Set<FullTimeSpecializationPlan> fullTimeSpecializationPlans = new HashSet<>();
         fullTimeSpecializationPlans.add(new FullTimeSpecializationPlan(specializations.get(4), 40, 3));
         fullTimeSpecializationPlans.add((FullTimeSpecializationPlan) specializationPlans.get(1));
         FinalEntrantPlan<FullTimeSpecializationPlan> fullTimePlan2021 = new FinalEntrantPlan<>(fullTimeSpecializationPlans, LocalDate.of(2021, 1, 1), employee);
+        logger.debug(fullTimePlan2021.getYearPlan());
     }
 }

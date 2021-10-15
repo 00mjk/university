@@ -7,13 +7,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws PersonInvalidDataException {
         System.setProperty("log4j.configurationFile", "log4j2.xml");
 
         Logger logger = LogManager.getLogger(Main.class);
@@ -147,5 +145,20 @@ public class Main {
         try (Unnessesary unnessesary = new Unnessesary()) {
             logger.debug("Do something in try with resources");
         }
+
+        logger.info("##### Generics using example #####");
+        Folder<EntrantForm> entrantFormFolder2021 = new Folder<>();
+        entrantFormFolder2021.addDocument(bachelorEntrantForm);
+        entrantFormFolder2021.addDocument(masterEntrantForm);
+
+        Map<Employee, String> employeeAnswers = new HashMap<>();
+        employeeAnswers.put(new Employee("Vasya", "Pupkin", employeePosition), "We can upgrade our computers");
+        employeeAnswers.put(new Employee("Inna", "Ivanovna", employeePosition), "We can improve our skills");
+        Survey<Employee> employeesSurvey = new Survey<>("What can be improved", "All)", employeeAnswers);
+
+        Set<FullTimeSpecializationPlan> fullTimeSpecializationPlans = new HashSet<>();
+        fullTimeSpecializationPlans.add(new FullTimeSpecializationPlan(specializations.get(4), 40, 3));
+        fullTimeSpecializationPlans.add((FullTimeSpecializationPlan) specializationPlans.get(1));
+        FinalEntrantPlan<FullTimeSpecializationPlan> fullTimePlan2021 = new FinalEntrantPlan<>(fullTimeSpecializationPlans, LocalDate.of(2021, 1, 1), employee);
     }
 }

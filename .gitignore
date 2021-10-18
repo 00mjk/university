@@ -6,7 +6,7 @@ out/
 *.jar
 *.war
 *.ear
-*.nars
+*.nar
 hs_err_pid*
 log/*
 /lib

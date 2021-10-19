@@ -11,8 +11,6 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) throws PersonInvalidDataException {
-        System.setProperty("log4j.configurationFile", "log4j2.xml");
-
         Logger logger = LogManager.getLogger(Main.class);
 
         List<City> cities = new ArrayList<>();
